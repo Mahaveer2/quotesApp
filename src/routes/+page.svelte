@@ -4,7 +4,15 @@
   let url = "https://picsum.photos/1920/1080";
   import quotes from '$lib/quotes.json';
   let randomQuote = quotes[Math.floor(Math.random()*quotes.length)];
-  console.log(randomQuote)
+  
+  async function changeImage(){
+    let res = await fetch("https://picsum.photos/1920/1080");
+    return res.url;
+  }
+
+  setInterval(async () => {
+    url = await changeImage();
+  },(2*60*1000))
 </script>
 
 <div class="app">
