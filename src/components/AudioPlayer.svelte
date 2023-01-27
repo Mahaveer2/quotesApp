@@ -16,17 +16,6 @@
     play = !play;
     play ? audio.play() : audio.pause();
   };
-
-		document.addEventListener('mousemove', (event) => {
-			if (click < 160) {
-				click++;
-			}
-			if (click == 100) {
-        audio.play();
-        document.removeEventListener("mousemove",() => {});
-				play = true;
-			}
-		});
 	});
 </script>
 
@@ -48,7 +37,7 @@
   .audio-button{
     width: 60px;
     height: 60px;
-    position: absolute;
+    position: absolute;z-index:1000 ;
     bottom: 10%;
     right: 10%;
     background: #FFAFBD;  /* fallback for old browsers */

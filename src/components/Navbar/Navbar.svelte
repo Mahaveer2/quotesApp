@@ -13,15 +13,22 @@
       <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 9h16.5m-16.5 6.75h16.5" />
     </svg>
   </div>
+  
   <ul class={`sidenav ${nav && "active"}`}>
     <a class="close" on:click={() => nav = !nav} href="#">&times;</a>
-    <li>
+    <li on:click={() => nav=false}>
       <NavLink
       title="Home"
       href="/"
       />
     </li>
-    <li>
+    <li on:click={() => nav=false}>
+      <NavLink
+      title="Search"
+      href="/search"
+      />
+    </li>
+    <li on:click={() => nav=false}>
       <NavLink
       title="About"
       href="/about"

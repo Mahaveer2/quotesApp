@@ -15,6 +15,6 @@
   <p>
     {quote.quote}
    </p>
-  <cite>{quote.author}</cite>
+  <cite>{quote.Author}</cite>
 </blockquote>
 {/if}
