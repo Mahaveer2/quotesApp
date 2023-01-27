@@ -4,6 +4,7 @@
   width: 100%;
   z-index: 100000;
   height: 50px;
+  background-color: rgba(0,0,0,.2);
   backdrop-filter: blur(3px);
   color: #fff !important;
   padding: 20px;
@@ -11,5 +12,53 @@
   ul li,ul li a{
     cursor: pointer;
     color: #fff;
+  }
+
+  ul li a.active{
+    border-radius: 0;
+    box-shadow: 0 2px 0px rgb(23, 112, 255);
+  }
+}
+nav .menu,.close{
+  cursor: pointer;
+  display: none;
+}
+
+@media screen and (max-width:800px) {
+  nav .menu{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 10px;
+    
+  }
+
+  .close{
+    position: absolute;
+    top: 5%;
+    display: block;
+    left: 15%;
+  }
+
+  nav .sidenav{
+    display: flex;
+    visibility: hidden;
+    position: absolute;
+    font-size: 12vw;
+    transition: .2s ease;
+    justify-content: center;
+    align-items: center;
+    left: 0;
+    top: 0;
+    height: 0vh;
+    flex-direction: column;
+    background-color: rgba(0,0,0,1);
+    width: 100%;
+  }
+
+  nav .sidenav.active{
+    visibility: visible;
+    height: 100vh;
   }
 }
