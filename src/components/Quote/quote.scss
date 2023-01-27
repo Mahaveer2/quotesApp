@@ -1,32 +1,56 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500&family=ZCOOL+QingKe+HuangYou&display=swap');
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
 
-.quote{
-  font-family: 'Poppins' !important;
+blockquote {
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+  max-width: 900px;
+  display: flex;
+  border-color: #fff;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+p,
+cite {
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+p {
+  font-family: Georgia;
+  color: #fff;
+  opacity: 1;
+  font-size: 2.7rem;
+  animation: fade 2s ease;
   font-style: italic;
-  background-color: rgba(0,0,0,.5);
-  padding: 20px;
-  backdrop-filter: blur(4px);
-  border-radius: 20px;
-  font-size: 2rem;
-  transition: .2s ease;
-  transform: .2s ease;
-  visibility: hidden;
-  cursor: pointer;
-  overflow: hidden;
-  animation: quote 60s linear;
+  font-weight: 300;
+  padding-bottom: 2rem;
 }
 
-.quote:hover{
-  background-color: rgba(0,0,0,.6);
+cite {
+  font-family: verdana;
+  font-size: 0.9rem;
+  color: rgb(210, 210, 210);
+  font-style: normal;
+  font-weight: 500;
+}
+cite.animate {
+  opacity: 1;
 }
 
-@keyframes quote {
-  from{
-    visibility: visible;
-    transform: translateY(0);
+@keyframes fade{
+  0%,100%{
+    opacity: 0;
   }
-  to{
-    transform: translateY(100vh);
-    display: none;
+  100%{
+    opacity: 1;
   }
 }

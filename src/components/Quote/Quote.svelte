@@ -5,12 +5,16 @@
 </script>
 
 {#if !isFull}
-<div class="quote animating">
-  {quote.quote}
-</div>
+<blockquote>
+  <p>
+   {quote.quote}
+  </p>
+ </blockquote>
 {:else}
-<article class="card">
-  <h1>{quote.quote}</h1>
-  <span style="font-size:18px">By {quote.author}</span>
-</article>
+<blockquote>
+  <p>
+    {quote.quote}
+   </p>
+  <cite>{quote.author}</cite>
+</blockquote>
 {/if}
