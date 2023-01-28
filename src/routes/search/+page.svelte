@@ -6,9 +6,9 @@
 
   let search = (search) => {
     if(search.length == 0){
-      quotes =data.data;
+      quotes = data.data;
     }
-    quotes = quotes.filter( quote => {
+    quotes = data.data.filter( quote => {
       const regex = new RegExp(`^${search}`,'gi');
       return quote.quote.match(regex) || quote.Author.match(regex);
     })
