@@ -20,8 +20,13 @@ export const getCategory = async (key) => {
   return data; 
 };
 
+export const getCategories = async () => {
+  const data = await client.fetch(`*[_type=="category"]`);
+  return data; 
+};
+
 export const QuoteFromCategory = async (category) => {
-  const data = await client.fetch(`*[_type=="Quotes"]`);
+  const data = await client.fetch(`*[_type=="categories"]`);
   return data; 
 };
 
