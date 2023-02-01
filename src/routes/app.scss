@@ -3,7 +3,9 @@
   z-index:  000;
   position: relative;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
+  max-inline-size: 100%;
+  block-size: auto;
 
   .main-image{
     width: 100%;
@@ -15,6 +17,32 @@
 
   .app-content{
     color: #fff !important;
+    position:relative;
+    overflow-y: hidden;
+    height: 100%;
     padding-top: 100px;
+  }
+}
+
+.card-float{
+  animation-delay: var(--delay);
+  position: absolute !important;
+  transform: translate(-50%,-0%);
+  left: 50%;
+  display: flex;
+  width: 100%;
+  justify-self: center;
+  align-items: center;
+  flex-direction: column;
+  animation: float 60s linear infinite;
+}
+
+@keyframes float {
+  0%{
+    top: -80%;
+  }
+
+  100%{
+    top:100%;
   }
 }

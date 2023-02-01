@@ -9,6 +9,7 @@
 
 <h1>Welcome to Quotic</h1>
 <Quote 
+category={quote[0].category}
     isFull={true}
     quote={quote[0]}
     />

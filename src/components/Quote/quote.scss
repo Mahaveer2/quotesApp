@@ -16,7 +16,13 @@ blockquote {
   border-color: #fff;
   justify-content: center;
   align-items: center;
+  transition: .2s ease;
   flex-direction: column;
+}
+
+blockquote.notfull:hover{
+  background-color: rgba(0,0,0,.5);
+  cursor: pointer;
 }
 p,
 cite {

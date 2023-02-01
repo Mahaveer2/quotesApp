@@ -23,9 +23,8 @@
 {#each quotes as quote, i}
 		<Transition>
 			<div
-				style="width:100%;display:flex;
-        margin-top:10px;
-				justify-content:center;align-items:center;"
+				style={`width:100%;display:flex;--delay:${i*1000}ms;
+				justify-content:center;align-items:center;`}
 			>
 				<a class="card" href={`/quote/${quote.slug.current}`}>
 					<article>
