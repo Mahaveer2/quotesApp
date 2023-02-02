@@ -9,16 +9,18 @@
 	let quotes = data.data;
 </script>
 
-<h1>Welcome to music app</h1>
-<div class="card-float">
-{#each quotes as quote}
-	<div
-		style="width:100%;display:flex;
-				justify-content:center;align-items:center;"
-	>
-		<a style="text-decoration: none;width:80%" href={`/quote/${quote.slug.current}`}>
-			<Quote isFull={false} {quote} />
-		</a>
-	</div>
-{/each}
+<h1>Welcome to Quotic</h1>
+<div style="height:100vh" class="card-container">
+	<div class="card-float">
+		{#each quotes as quote}
+			<div
+				style="width:100%;display:flex;
+						justify-content:center;align-items:center;"
+			>
+				<a style="text-decoration: none;width:80%" href={`/quote/${quote.slug.current}`}>
+					<Quote isFull={false} {quote} />
+				</a>
+			</div>
+		{/each}
+		</div>
 </div>

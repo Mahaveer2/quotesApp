@@ -4,8 +4,7 @@
   width: 100%;
   z-index: 100000;
   height: 60px;
-  background-color: rgba(0,0,0,.2);
-  backdrop-filter: blur(3px);
+  background: linear-gradient(to bottom,rgba(0,0,0,0.7),transparent);
   color: #fff !important;
   padding: 20px;
 
@@ -16,7 +15,7 @@
 
   ul li a.active{
     border-radius: 0;
-    box-shadow: 0 2px 0px rgb(23, 112, 255);
+    box-shadow: 0 2px 0px #fff;
   }
 }
 nav .menu,.close{
@@ -45,7 +44,7 @@ nav .menu,.close{
     display: flex;
     visibility: hidden;
     position: absolute;
-    font-size: 12vw;
+    font-size: 8vw;
     transition: .2s ease;
     justify-content: center;
     align-items: center;

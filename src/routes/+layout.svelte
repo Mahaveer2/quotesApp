@@ -17,6 +17,10 @@
   },2*60*1000)
   let play = false;
 </script>
+
+<svelte:head>
+  <title>Quotic</title>
+</svelte:head>
 <Navbar/>
 
 <div class="app">
