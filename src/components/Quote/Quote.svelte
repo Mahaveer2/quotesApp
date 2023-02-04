@@ -7,7 +7,11 @@
 	import { getCategory } from '$lib/functions';
 	import { onMount } from 'svelte';
 
-	$:  cat = [];
+	const speak = (text) => {
+		let utterance = new SpeechSynthesisUtterance(text);
+		speechSynthesis.speak(utterance);
+	};
+	$: cat = [];
 
 	async function getCategories(ref) {
 		let data = await getCategory(ref);
@@ -15,13 +19,13 @@
 	}
 
 	onMount(async () => {
-		if(category){
-			category.forEach( async (c) => {
-				cat.push( await getCategories(c._ref));
+		if (category) {
+			category.forEach(async (c) => {
+				cat.push(await getCategories(c._ref));
 				cat = cat;
-			})
+			});
 		}
-	})
+	});
 
 	const addView = (id) => {
 		client
@@ -31,7 +35,7 @@
 			.commit() // Perform the patch and return a promise
 			.then((updated) => {})
 			.catch((err) => {
-				console.error(err)
+				console.error(err);
 			});
 	};
 </script>
@@ -44,14 +48,20 @@
 	</blockquote>
 {:else}
 	<blockquote>
+		<button on:click={() => speak(quote.quote)} class="speaker">
+			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+				<path stroke-linecap="round" stroke-linejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+			</svg>
+		</button>
 		<p>
-			{quote.quote}
+			{quote.quote}			
 		</p>
 		<cite>{quote.Author}</cite>
 		<span style="width:100px;height:0;background:red;padding:0;margin:0;">
 			<small style="color:#fff">
 				Views: {quote.views}
 			</small>
+			
 		</span>
 		{#if category}
 			<div class="flexer">
@@ -62,10 +72,14 @@
 				{/each}
 			</div>
 		{/if}
+		
 	</blockquote>
 {/if}
 
 <style>
+	blockquote{
+		position: relative;
+	}
 	.flexer {
 		display: flex;
 		justify-content: space-between;
@@ -78,5 +92,30 @@
 		padding: 6px 20px;
 		border-radius: 20px;
 		cursor: pointer;
+	}
+
+	.speaker{
+		width: 30px;
+		background-color: transparent;
+		padding: 0;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		position: absolute;
+		left: 90%;
+		top: 10%;
+		align-items: center;
+		transition: .2s ease;
+		color: rgb(163, 163, 163);
+		border: none;outline: none;
+		font-size: 30px;
+	}
+
+	.speaker:focus{
+		box-shadow: none;
+	}
+
+	.speaker:hover{
+		color: rgb(255, 255, 255 );
 	}
 </style>
