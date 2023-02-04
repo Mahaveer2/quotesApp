@@ -6,7 +6,7 @@
 
 	export let data;
 
-	let quotes = data.data;
+	let quotes = data.data.sort((a,b) => Number(a.views) - Number(b.views)).reverse();
 </script>
 
 <h1>Top ten quotes</h1>

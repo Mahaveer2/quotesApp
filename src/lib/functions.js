@@ -31,6 +31,6 @@ export const QuoteFromCategory = async (category) => {
 };
 
 export const trendingPosts = async () => {
-  const data = await client.fetch(`*[_type=="trending"]`);
+  let data = await client.fetch(`*[_type=="Quotes"]`);
   return data; 
 };

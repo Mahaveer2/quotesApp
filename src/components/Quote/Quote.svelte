@@ -19,7 +19,6 @@
 				cat.push( await getCategories(c._ref));
 				cat = cat;
 			})
-			console.log(cat)
 		}
 	})
 </script>
@@ -36,6 +35,11 @@
 			{quote.quote}
 		</p>
 		<cite>{quote.Author}</cite>
+		<span style="width:100px;height:0;background:red;padding:0;margin:0;">
+			<small style="color:#fff">
+				Views: {quote.views}
+			</small>
+		</span>
 		{#if category}
 			<div class="flexer">
 				{#each cat as _category}
