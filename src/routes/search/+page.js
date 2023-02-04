@@ -1,11 +1,13 @@
 import { getQuotes,getCategories } from "$lib/functions";
 
 export async function load({ params }) {
-  let data =  getQuotes()
+  let data = await getQuotes()
   let categories = await getCategories();
 
-  console.log(categories)
-  
+  data = data.filter(quote => {
+    return quote.active;
+  })
+  console.log(data)
   return {
     data:data,
     categories:categories,

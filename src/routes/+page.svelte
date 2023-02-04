@@ -7,6 +7,7 @@
 	export let data;
 
 	let quotes = data.data;
+	quotes = quotes.filter(quote => quote.active);
 </script>
 
 <h1>Welcome to Quotic</h1>

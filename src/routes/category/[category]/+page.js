@@ -16,6 +16,7 @@ export async function load({ params }) {
 	})
 
 	let quotes = await getQuotes();
+	quotes = quotes.filter(q => q.active);
 
 	if(quotes && category){
 		let id = category._id;
