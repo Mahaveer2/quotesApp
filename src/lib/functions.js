@@ -32,5 +32,6 @@ export const QuoteFromCategory = async (category) => {
 
 export const trendingPosts = async () => {
   let data = await client.fetch(`*[_type=="Quotes"]`);
+  data = data.filter(quote => quote.active)
   return data; 
 };
