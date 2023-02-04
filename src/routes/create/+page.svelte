@@ -8,6 +8,8 @@
 	let Quote = '';
 	let _category = '';
 	let msg = '';
+	let email = '';
+	let name = '';
 
 	export let data;
 	console.log(data);
@@ -24,6 +26,9 @@
 			_type: 'Quotes',
 			Author: author,
 			quote: quote,
+			email:email,
+			name:name,
+			views:0,
 			slug: {
 				_type: 'slug',
 				current: slug
@@ -44,6 +49,12 @@
 				setTimeout(() => {
 					msg = '';
 				},3000)
+				handle = false;
+				Author = "";
+				email ="";
+				name ="";
+				Quote = "";
+				_category ="";
 			})
 			.catch((error) => console.error(error));
 	};
@@ -62,6 +73,8 @@
 
 <form aria-busy={handle} aria-disabled={handle} on:submit|preventDefault={handleSubmit}>
 	<p style="color: #fff;">Do you have an original Quote you would like to see it published. Simply Type in your Quote, once our Team verifies it is original and from you, we will post on the site.</p>
+	<input required bind:value={email} type="email" placeholder="Email" />
+	<input required bind:value={name} type="text" placeholder="Name" />
 	<input required bind:value={Author} type="text" placeholder="Author" />
 	<textarea required bind:value={Quote} type="text" placeholder="Quote" />
 	<select required bind:value={_category} name="" id="">
