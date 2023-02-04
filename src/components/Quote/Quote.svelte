@@ -3,6 +3,7 @@
 	export let isFull;
 	import './quote.scss';
 	export let category;
+	import { createClient as client } from '$lib/SanityClient.js';
 	import { getCategory } from '$lib/functions';
 	import { onMount } from 'svelte';
 
@@ -21,10 +22,22 @@
 			})
 		}
 	})
+
+	const addView = (id) => {
+		client
+			.patch(id) // Document ID to patch
+			.set({ active: true }) // Shallow merge
+			.inc({ views: 1 }) // Increment field by count
+			.commit() // Perform the patch and return a promise
+			.then((updated) => {})
+			.catch((err) => {
+				console.error(err)
+			});
+	};
 </script>
 
 {#if !isFull}
-	<blockquote class={`${!isFull && 'notfull'}`}>
+	<blockquote on:click={() => addView(quote._id)} class={`${!isFull && 'notfull'}`}>
 		<p>
 			{quote.quote}
 		</p>
