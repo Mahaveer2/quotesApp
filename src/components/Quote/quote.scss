@@ -2,6 +2,8 @@
   margin: 0;
   box-sizing: border-box;
 }
+
+@import url('https://fonts.googleapis.com/css2?family=Crimson+Text:ital@0;1&display=swap');
 html,
 body {
   height: 100%;
@@ -13,7 +15,8 @@ blockquote {
   text-align: center;
   max-width: 900px;
   display: flex;
-  border-color: #fff;
+  border: none;
+  font-family: 'Crimson Text', serif;
   justify-content: center;
   align-items: center;
   transition: .2s ease;
@@ -31,7 +34,7 @@ cite {
   -moz-osx-font-smoothing: grayscale;
 }
 blockquote p {
-  font-family: Georgia;
+  font-family: 'Crimson Text', serif;
   color: #fff;
   opacity: 1;
   font-size: 2.7rem;
@@ -42,7 +45,7 @@ blockquote p {
 }
 
 cite {
-  font-family: verdana;
+  font-family: 'Crimson Text', serif;
   font-size: 0.9rem;
   color: rgb(210, 210, 210);
   font-style: normal;

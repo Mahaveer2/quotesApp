@@ -16,13 +16,29 @@
     currentIndex++;
   },2*60*1000)
   let play = false;
-</script>
 
+  onMount(() => {
+    const cursor = document.querySelector('.cursor');
+
+document.addEventListener('mousemove', e => {
+    cursor.setAttribute("style", "top: "+(e.pageY - 10)+"px; left: "+(e.pageX - 10)+"px;")
+})
+
+document.addEventListener('click', () => {
+    cursor.classList.add("expand");
+
+    setTimeout(() => {
+        cursor.classList.remove("expand");
+    }, 500)
+})
+  });
+</script>
+<div class="cursor">
+</div>
 <svelte:head>
   <title>Quotic</title>
 </svelte:head>
 <Navbar/>
-
 <div class="app">
   <img  src={backgrounds[currentIndex].imageUrl} alt={backgrounds[currentIndex].Name} class="main-image" />
 	<div class="container app-content">

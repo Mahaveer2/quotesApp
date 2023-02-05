@@ -5,8 +5,6 @@
 	import Transition from '../components/Transition.svelte';
 	export let data;
 
-	
-
 	let quotes = data.data;
 	quotes = quotes.filter((quote) => quote.active);
 </script>
@@ -19,10 +17,7 @@
 				style="width:100%;display:flex;
 						justify-content:center;align-items:center;"
 			>
-				<a
-					style="text-decoration: none;width:80%"
-					href={`/quote/${quote.slug.current}`}
-				>
+				<a style="text-decoration: none;width:80%" href={`/quote/${quote.slug.current}`}>
 					<Quote isFull={false} {quote} />
 				</a>
 			</div>

@@ -10,6 +10,7 @@
 	let msg = '';
 	let email = '';
 	let name = '';
+	let desc = '';
 
 	export let data;
 	console.log(data);
@@ -21,13 +22,14 @@
 	}
 
 	let slug = uuidv4();
-	const createQuote = ({ quote, author }) => {
+	const createQuote = ({ quote, author,_desc }) => {
 		const doc = {
 			_type: 'Quotes',
 			Author: author,
 			quote: quote,
 			email:email,
 			name:name,
+			description:_desc,
 			views:0,
 			slug: {
 				_type: 'slug',
@@ -52,6 +54,7 @@
 				handle = false;
 				Author = "";
 				email ="";
+				desc = "";
 				name ="";
 				Quote = "";
 				_category ="";
@@ -65,7 +68,7 @@
 			alert('Please enter valid Author name');
 			return false;
 		}
-		createQuote({ quote: Quote, author: Author });
+		createQuote({ quote: Quote, author: Author ,desc:desc});
 	};
 </script>
 
@@ -77,6 +80,7 @@
 	<input required bind:value={name} type="text" placeholder="Name" />
 	<input required bind:value={Author} type="text" placeholder="Author" />
 	<textarea required bind:value={Quote} type="text" placeholder="Quote" />
+	<textarea required bind:value={desc} type="text" placeholder="Description" />
 	<select required bind:value={_category} name="" id="">
 		{#each data.data as category}
 			<option value={category._id} placeholder="Select a category">{category.title}</option>

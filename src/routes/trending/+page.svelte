@@ -17,7 +17,7 @@
 				justify-content:center;align-items:center;"
 	>
 		<a style="text-decoration: none;width:80%" href={`/quote/${quote.slug.current}`}>
-			<Quote category={quote.category} isFull={false} {quote} />
+			<Quote category={quote.category} isFull={false} showAuthor={true} {quote} />
 		</a>
 	</div>
 {/each}

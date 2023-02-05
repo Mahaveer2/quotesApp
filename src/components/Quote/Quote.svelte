@@ -1,12 +1,12 @@
 <script>
 	export let quote;
 	export let isFull;
+	export let showAuthor;
 	import './quote.scss';
 	export let category;
 	import { createClient as client } from '$lib/SanityClient.js';
 	import { getCategory } from '$lib/functions';
 	import { onMount } from 'svelte';
-
 	const speak = (text) => {
 		let utterance = new SpeechSynthesisUtterance(text);
 		speechSynthesis.speak(utterance);
@@ -45,6 +45,9 @@
 		<p>
 			{quote.quote}
 		</p>
+		{#if showAuthor}
+		<cite>{quote.Author}</cite>
+		{/if}
 	</blockquote>
 {:else}
 	<blockquote>
@@ -57,6 +60,7 @@
 			{quote.quote}			
 		</p>
 		<cite>{quote.Author}</cite>
+		<p  style="font-size:18px;font-family:arial;max-width:100%">{quote?.description}</p>
 		<span style="width:100px;height:0;background:red;padding:0;margin:0;">
 			<small style="color:#fff">
 				Views: {quote.views}
@@ -95,21 +99,57 @@
 	}
 
 	.speaker{
-		width: 30px;
+		width: 50px;
 		background-color: transparent;
 		padding: 0;
-		height: 30px;
+		height: 50px;
 		display: flex;
 		justify-content: center;
 		position: absolute;
 		left: 90%;
-		top: 10%;
+		top: 20%;
+		background: #ffafbd; /* fallback for old browsers */
+		background: -webkit-linear-gradient(
+			to right,
+			#ffc3a0,
+			#ffafbd
+		); /* Chrome 10-25, Safari 5.1-6 */
+		background: linear-gradient(
+			to right,
+			#ffc3a0,
+			#ffafbd
+		); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+		border-radius: 50%;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
 		align-items: center;
 		transition: .2s ease;
-		color: rgb(163, 163, 163);
+
 		border: none;outline: none;
 		font-size: 30px;
 	}
+
+
+	.animate-pulse{
+		transition: .2s ease;
+		animation: pulse 2s linear infinite;
+	}
+
+	@keyframes pulse{
+		0%{
+
+		}
+		80%{
+			box-shadow: 0 0 0 12px rgba(255, 28, 138, 0.246);
+		}
+	}
+
+	.speaker svg {
+		width: 27px;
+		height: 27px;
+	}
+
 
 	.speaker:focus{
 		box-shadow: none;
