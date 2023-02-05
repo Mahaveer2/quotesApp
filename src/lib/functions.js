@@ -35,3 +35,8 @@ export const trendingPosts = async () => {
   data = data.filter(quote => quote.active)
   return data; 
 };
+
+export const getSiteSettings = async () => {
+  let data = await client.fetch(`*[_type=="site"]{"logo": logo.asset->url,name,about,desc,head}`);
+  return data[0];
+}

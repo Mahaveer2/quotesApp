@@ -1,9 +1,13 @@
-import { getBackgrounds } from "$lib/functions";
+import { getBackgrounds,getSiteSettings } from "$lib/functions";
+import { settingData } from "$lib/stores.js";
 
 export async function load({ params }) {
-  let data =  getBackgrounds()
+  let data = await getBackgrounds()
+  let settings = await getSiteSettings();
+  settingData.set(settings);
   
   return {
+    settings:settings,
     data:data,
   }
 }

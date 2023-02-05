@@ -5,6 +5,7 @@
   import "./app.scss";
 
   export let data;
+  let {settings} = data;
   
   let backgrounds = data.data;
   let currentIndex = 0;
@@ -36,7 +37,10 @@ document.addEventListener('click', () => {
 <div class="cursor">
 </div>
 <svelte:head>
-  <title>Quotic</title>
+  <title>{settings.name}</title>
+  <link rel="icon" href={settings.logo} >
+  <link rel="apple-touch-icon image_src" href={settings.logo}>
+  {@html settings.head}
 </svelte:head>
 <Navbar/>
 <div class="app">
