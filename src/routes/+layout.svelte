@@ -1,6 +1,7 @@
 <script>
 	import { onMount } from "svelte";
 	import AudioPlayer from "../components/AudioPlayer.svelte";
+	import Loader from "../components/Loader/Loader.svelte";
   import Navbar from "../components/Navbar/Navbar.svelte";
   import "./app.scss";
 
@@ -36,6 +37,7 @@ document.addEventListener('click', () => {
 </script>
 <div class="cursor">
 </div>
+<Loader/>
 <svelte:head>
   <title>{settings.name}</title>
   <link rel="icon" href={settings.logo} >

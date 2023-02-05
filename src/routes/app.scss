@@ -26,16 +26,13 @@
 .card-float{
   animation-delay: var(--delay);
   position: absolute !important;
-  transform: translate(-50%,-0%);
-  left: 50%;
-  top: 50%;
   display: flex;
   width: 100%;
   gap: 20px;
   justify-self: center;
   align-items: center;
   flex-direction: column;
-  animation: float 50s linear infinite;
+  animation: float 60s linear infinite;
 }
 
 input,textarea,select{
@@ -49,11 +46,14 @@ input,textarea,select{
 
 @keyframes float {
   0%{
-    top: -20%;
+    top: calc(var(--height) * -1);
   }
 
+  99%{
+    top: 100%;
+  }
   100%{
-    top:100%;
+    top: calc(var(--height) * -1);
   }
 }
 
@@ -105,7 +105,7 @@ a:hover{
   }
   70% {
       transform: scale(1.4);
-      border-color: red;
+      border-color: white;
   }
   100% {
     transform: scale(1);
@@ -126,18 +126,6 @@ a:hover{
     left: -8px;
   
   }
-}
-
-p {
-color: white;
-font-family: 'arial';
-text-align: center;
-margin-top: 50px;
-font-size: 1.4em;
-
-a {
-  color: teal;
-}
 }
 
 @media screen and (max-width: 768px) {

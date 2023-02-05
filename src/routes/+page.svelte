@@ -6,12 +6,13 @@
 	export let data;
 
 	let quotes = data.data;
+	let height = "";
 	quotes = quotes.filter((quote) => quote.active);
 </script>
 
 <h1>Welcome to Quotic</h1>
 <div style="height:100vh" class="card-container">
-	<div class="card-float">
+	<div class="card-float" bind:clientHeight={height} style={`--height:${height}px`} >
 		{#each quotes as quote}
 			<div
 				style="width:100%;display:flex;
