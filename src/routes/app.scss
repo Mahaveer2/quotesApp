@@ -138,3 +138,9 @@ a {
   color: teal;
 }
 }
+
+@media screen and (max-width: 768px) {
+  .cursor{
+    display: none;
+  }
+}
