@@ -2,7 +2,7 @@
 	import { createClient as client } from '$lib/SanityClient';
 	import { goto } from '$app/navigation';
 	import Transition from '../../components/Transition.svelte';
-
+	import { v4 as uuidv4 } from 'uuid';
 	let Author = '';
 	let handle = false;
 	let Quote = '';
@@ -15,13 +15,6 @@
 	export let data;
 	console.log(data);
 
-	function uuidv4() {
-		return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, (c) =>
-			(c ^ (crypto.getRandomValues(new Uint8Array(1))[0] & (15 >> (c / 4)))).toString(16)
-		);
-	}
-
-	let slug = uuidv4();
 	const createQuote = ({ quote, author,_desc }) => {
 		const doc = {
 			_type: 'Quotes',
@@ -33,7 +26,7 @@
 			views:0,
 			slug: {
 				_type: 'slug',
-				current: slug
+				current: uuidv4()
 			},
 			category: [
 				{
@@ -68,7 +61,7 @@
 			alert('Please enter valid Author name');
 			return false;
 		}
-		createQuote({ quote: Quote, author: Author ,desc:desc});
+		createQuote({ quote: Quote, author: Author ,_desc:desc});
 	};
 </script>
 
