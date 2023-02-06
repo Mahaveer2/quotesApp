@@ -1,19 +1,30 @@
 <script>
+	import Fuse from 'fuse.js';
 	import Quote from '../../components/Quote/Quote.svelte';
 	import Transition from '../../components/Transition.svelte';
 	export let data;
 	let quotes = data.data;
 	let categories = data.categories;
-	console.log(categories);
 
 	let search = (search) => {
-		if (search.length == 0) {
+		const options = {
+			keys: ['Author', 'quote']
+		};
+
+		// Create a new instance of Fuse
+		const fuse = new Fuse(data.data, options);
+
+		if (search == '') {
 			quotes = data.data;
+			quotes = quotes;
+		} else {
+			let res = fuse.search(search);
+			quotes = [];
+			res.forEach((e) => {
+				quotes.push(e.item);
+				quotes = quotes;
+			});
 		}
-		quotes = data.data.filter((quote) => {
-			const regex = new RegExp(`^${search}`, 'gi');
-			return quote.quote.match(regex) || quote.Author.match(regex);
-		});
 	};
 </script>
 
@@ -27,14 +38,14 @@
 </form>
 
 <div>
-  Categories
-  <div class="flexer"> 
-    {#each categories as category}
-	<a style="color:#fff" href={`category/${category.slug.current}`}>
-		<div class="category">{category.title}</div>
-	</a>
-{/each}
-  </div>
+	Categories
+	<div class="flexer">
+		{#each categories as category}
+			<a style="color:#fff" href={`category/${category.slug.current}`}>
+				<div class="category">{category.title}</div>
+			</a>
+		{/each}
+	</div>
 </div>
 
 {#each quotes as quote, i}
@@ -69,7 +80,7 @@
 
 	.flexer {
 		display: flex;
-    gap: 20px;
+		gap: 20px;
 		margin-top: 20px;
 		width: 100%;
 	}
@@ -81,4 +92,3 @@
 		cursor: pointer;
 	}
 </style>
-
