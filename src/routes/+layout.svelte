@@ -12,11 +12,12 @@
   let currentIndex = 0;
 
   setInterval(() => {
-    if(currentIndex >= backgrounds.length){
+    if(currentIndex == backgrounds.length - 1){
       currentIndex =0;
+    }else{
+      currentIndex++;
     }
-    currentIndex++;
-  },2*60*1000)
+  },1000 * 60 * 2)
   let play = false;
 
   onMount(() => {

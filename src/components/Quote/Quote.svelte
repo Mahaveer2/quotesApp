@@ -63,7 +63,7 @@
 		<p  style="font-size:18px;font-family:arial;max-width:100%">{quote?.description}</p>
 		<span style="width:100px;height:0;background:red;padding:0;margin:0;">
 			<small style="color:#fff">
-				Views: {quote.views}
+				Views: {quote.views+1}
 			</small>
 			
 		</span>
