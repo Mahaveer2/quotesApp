@@ -1,6 +1,5 @@
 import { getBackgrounds,getSiteSettings } from "$lib/functions";
 import { settingData } from "$lib/stores.js";
-export const trailingSlash = 'always';
 
 export async function load({ params }) {
   let data = await getBackgrounds()
