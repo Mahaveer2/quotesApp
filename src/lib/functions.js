@@ -37,6 +37,6 @@ export const trendingPosts = async () => {
 };
 
 export const getSiteSettings = async () => {
-  let data = await client.fetch(`*[_type=="site"]{"logo": logo.asset->url,name,about,desc,head}`);
+  let data = await client.fetch(`*[_type=="site"]{"logo": logo.asset->url,name,about,desc,head,url,rule}`);
   return data[0];
 }
