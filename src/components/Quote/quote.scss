@@ -32,17 +32,16 @@ p,
 cite {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  font-family: var(--font) !important;
   -moz-osx-font-smoothing: grayscale;
   width:100%;
 }
 
 blockquote p {
   color: #fff;
-  opacity: 1;
+  opacity: 1;font-family: var(--font) !important;
   font-size: 2.7rem;
   animation: fade 2s ease;
-  font-style: italic;
-  font-weight: 300;
   padding-bottom: 2rem;
 }
 
