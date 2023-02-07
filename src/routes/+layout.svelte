@@ -48,9 +48,10 @@ document.addEventListener('click', () => {
   <link rel="icon" href={settings.logo} >
   <link rel="apple-touch-icon image_src" href={settings.logo}>
   {@html settings.head}
+  {@html settings.url}
 </svelte:head>
 <Navbar/>
-<div class="app">
+<div class="app" style={`--font:${settings.rule}`}>
   <img  src={backgrounds[currentIndex].imageUrl} alt={backgrounds[currentIndex].Name} class="main-image" />
 	<div class="container app-content">
 <slot></slot>
@@ -62,3 +63,9 @@ document.addEventListener('click', () => {
 </div>
 
 <AudioPlayer play={play} src="music.mp3"/>
+
+<style>
+  .app blockquote{
+    font-family: var(--font) !important;
+  }
+</style>

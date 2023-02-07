@@ -7,7 +7,7 @@
 	import { createClient as client } from '$lib/SanityClient.js';
 	import { getCategory } from '$lib/functions';
 	import { onMount } from 'svelte';
-	import { settingData } from "$lib/stores.js";
+	
 	const speak = (text) => {
 		let utterance = new SpeechSynthesisUtterance(text);
 		speechSynthesis.speak(utterance);
@@ -43,10 +43,9 @@
 
 </script>
 
-{@html $settingData.url}
 
 {#if !isFull}
-	<blockquote style={`--font:${$settingData.rule}`} on:click={() => addView(quote._id)} class={`${!isFull && 'notfull'}`}>
+	<blockquote on:click={() => addView(quote._id)} class={`${!isFull && 'notfull'}`}>
 		<p>
 			{quote.quote}
 		</p>
