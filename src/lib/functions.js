@@ -1,4 +1,4 @@
-import { client } from "./SanityClient";
+import { client,createClient } from "./SanityClient";
 
 export const getQuotes = async () => {
   const data = await client.fetch(`*[_type == "Quotes"]`);
@@ -11,7 +11,7 @@ export const getBackgrounds = async () => {
 }
 
 export const getQuote = async (slug) => {
-  const data = await client.fetch(`*[slug.current == "${slug}"]`);
+  const data = await createClient.fetch(`*[slug.current == "${slug}"]`);
   return data; 
 }
 
@@ -31,7 +31,7 @@ export const QuoteFromCategory = async (category) => {
 };
 
 export const trendingPosts = async () => {
-  let data = await client.fetch(`*[_type=="Quotes"]`);
+  let data = await createClient.fetch(`*[_type=="Quotes"]`);
   data = data.filter(quote => quote.active)
   return data; 
 };
