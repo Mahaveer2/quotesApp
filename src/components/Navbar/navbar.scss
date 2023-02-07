@@ -5,17 +5,24 @@
   z-index: 100000;
   height: 60px;
   background: linear-gradient(to bottom,rgba(0,0,0,0.7),transparent);
-  color: #fff !important;
   padding: 20px;
 
-  ul li,ul li a{
+  ul li{
     cursor: pointer;
-    color: #fff;
+    color: #fff !important;
+  }
+
+  ul li a{
+    cursor: pointer;
+    color: #9f9f9f !important;
+  }
+
+  ul li a:active{
+    background-color: none !important;
   }
 
   ul li a.active{
-    border-radius: 0;
-    box-shadow: 0 2px 0px #fff;
+    color: #fff !important;
   }
 }
 nav .menu,.close{

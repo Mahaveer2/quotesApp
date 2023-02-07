@@ -83,7 +83,14 @@
 		gap: 20px;
 		margin-top: 20px;
 		width: 100%;
+		overflow-x: scroll;
+		-ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
 	}
+
+	.flexer::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+}
 	.category {
 		font-size: 18px;
 		background-color: rgba(0, 0, 0, 0.8);
