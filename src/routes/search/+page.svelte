@@ -4,6 +4,7 @@
 	export let data;
 	let quotes = data.data;
 	let categories = data.categories;
+	let searching = false;
 
 	async function postData(url = '', text) {
 		const formData =new FormData();
@@ -20,8 +21,12 @@
 
 	const search = text => {
 		setTimeout(() => {
-			postData('/api/search',text);
+			searching = true;
 		},150)
+		if(searching) {
+			postData('/api/search',text);
+			searching = false;
+		}
 	}
 </script>
 
