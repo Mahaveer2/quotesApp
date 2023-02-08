@@ -9,6 +9,7 @@
 
 	export let data;
 	let { settings } = data;
+	let { musicUrl } = data;
 
 	let quotes = data.quotes;
 	quotes = quotes.filter((quote) => quote.active);
@@ -75,7 +76,7 @@
 	</div>
 </div>
 
-<AudioPlayer {play} src="music.mp3" />
+<AudioPlayer {play} src={`${musicUrl[0].audio}`} />
 
 <style>
 	.app blockquote {

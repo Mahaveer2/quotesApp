@@ -10,6 +10,13 @@ export const getBackgrounds = async () => {
   return data;
 }
 
+export const getAudio = async () => {
+  const data = await client.fetch(`*[_type == 'music'] {
+    "audio": audio.asset->url
+  }`)
+  return data;
+}
+
 export const getQuote = async (slug) => {
   const data = await createClient.fetch(`*[slug.current == "${slug}"]`);
   return data; 
