@@ -40,7 +40,7 @@
 		client
 			.create(doc)
 			.then((res) => {
-				msg = 'The Posted Quote is saved in a Database to be verified by the Team';
+				msg = 'Thank you for your Original Quote, this is being verified by our Admin Team';
 				setTimeout(() => {
 					msg = '';
 				},3000)
@@ -107,9 +107,11 @@
 	}
 
 	.msg {
+		position: fixed;
+		bottom: 20px;right: 10.7%;
 		padding: 10px 20px;
-		background-color: rgba(0, 157, 255, 0.5);
-		border: 1px solid rgba(0, 157, 255, 0.6);
+		background-color: rgba(0, 157, 255, .8);
+		border: 1px solid rgba(34, 174, 255, 0.6);
 		border-radius: 4px;
 	}
 
