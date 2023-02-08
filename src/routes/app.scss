@@ -31,6 +31,7 @@
   justify-self: center;
   align-items: center;
   flex-direction: column;
+  transition: .2s ease;
   animation-name: float;
     animation-timing-function: linear;
     animation-iteration-count: infinite;
@@ -59,6 +60,10 @@ a{
 }
 a:hover{
   color: rgba(255,255,255,1) !important;
+}
+
+a:focus,button:focus{
+  background-color: none;
 }
 
 .cursor {

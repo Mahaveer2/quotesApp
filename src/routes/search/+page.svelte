@@ -21,7 +21,7 @@
 	const search = text => {
 		setTimeout(() => {
 			postData('/api/search',text);
-		},300)
+		},150)
 	}
 </script>
 
@@ -39,13 +39,13 @@
 	Categories
 	<div class="flexer">
 		{#each categories as category}
-			<a style="color:#fff" href={`category/${category.slug.current}`}>
+			<a style="color:#fff;" href={`category/${category.slug.current}`}>
 				<div class="category">{category.title}</div>
 			</a>
 		{/each}
 	</div>
 </div>
-
+<br>
 {#each quotes as quote, i}
 	<Transition>
 		<div
@@ -53,12 +53,10 @@
 				justify-content:center;align-items:center;`}
 		>
 			<a class="card" href={`/quote/${quote.slug.current}`}>
-				<article>
 					{quote.Author}
 					<p>
 						{quote.quote}
 					</p>
-				</article>
 			</a>
 		</div>
 	</Transition>
@@ -69,6 +67,15 @@
 		text-decoration: none;
 		width: 100%;
 		color: #fff;
+		margin-bottom: 1px;
+		background: rgba(0, 0, 0, 0.5);
+		border-radius: 8px;
+		padding: 30px;
+		display: flex;
+		margin-bottom: 10px;
+		flex-direction: column;
+		align-items: flex-start;
+		justify-content: center;
 	}
 
 	article,

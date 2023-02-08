@@ -3,9 +3,13 @@
   position: absolute;
   width: 100%;
   z-index: 100000;
-  height: 60px;
-  background: linear-gradient(to bottom,rgba(0,0,0,0.7),transparent);
-  padding: 20px;
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(0,0,0,0.3);
+  border-bottom: 1px solid rgba(37, 37, 37, 0.9);
+  padding: 0 50px;
 
   ul li{
     cursor: pointer;
@@ -42,25 +46,32 @@ nav .menu,.close{
 
   .close{
     position: absolute;
-    top: 5%;
+    top: 2%;
     display: block;
-    left: 15%;
+    right: 10%;
   }
 
   nav .sidenav{
     display: flex;
     visibility: hidden;
-    position: absolute;
-    font-size: 8vw;
+    font-size: 7vw;
     transition: .2s ease;
+    position: fixed;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     left: 0;
     top: 0;
     height: 0vh;
     flex-direction: column;
     background-color: rgba(0,0,0,1);
     width: 100%;
+  }
+
+  nav .sidenav .content{
+    display: flex;
+    margin-top: 50px;
+    flex-direction: column;
+    padding: 100px;
   }
 
   nav .sidenav.active{

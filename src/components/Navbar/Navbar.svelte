@@ -23,7 +23,8 @@
 	</div>
 
 	<ul class={`sidenav ${nav && 'active'}`}>
-		<a class="close" on:click={() => (nav = !nav)} href="#">&times;</a>
+		<div class="content">
+			<a class="close" on:click={() => (nav = !nav)} href="#">&times;</a>
 		<li on:click={() => (nav = false)}>
 			<NavLink title="Home" href="/" />
 		</li>
@@ -39,5 +40,6 @@
 		<li on:click={() => (nav = false)}>
 			<NavLink title="About" href="/about" />
 		</li>
+		</div>
 	</ul>
 </nav>

@@ -16,7 +16,7 @@
 		style="width:100%;display:flex;
 				justify-content:center;align-items:center;margin-bottom:15px"
 	>
-		<a style="text-decoration: none;width:80%" href={`/quote/${quote.slug.current}`}>
+		<a style="text-decoration: none;width:100%" href={`/quote/${quote.slug.current}`}>
 			<Quote category={quote.category} isFull={false} showAuthor={true} {quote} />
 		</a>
 	</div>
