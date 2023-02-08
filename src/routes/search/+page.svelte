@@ -68,7 +68,7 @@
 		width: 100%;
 		color: #fff;
 		margin-bottom: 1px;
-		background: rgba(0, 0, 0, 0.5);
+		background: rgba(0, 0, 0, 0.4);
 		border-radius: 8px;
 		padding: 30px;
 		display: flex;
@@ -98,7 +98,8 @@
 	}
 	.category {
 		font-size: 18px;
-		background-color: rgba(0, 0, 0, 0.8);
+		background-color: rgba(0, 0, 0, 0.3);
+		box-shadow: 2px 2px 2px rgba(44, 44, 44, 0.3);
 		padding: 6px 20px;
 		border-radius: 20px;
 		display: flex; widows: 100%;

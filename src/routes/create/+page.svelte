@@ -21,6 +21,7 @@
 			quote: quote,
 			email:email,
 			name:name,
+			active:false,
 			description:_desc,
 			views:0,
 			slug: {
