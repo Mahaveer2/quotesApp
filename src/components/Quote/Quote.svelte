@@ -1,9 +1,9 @@
 <script>
 	export let quote;
-	export let isFull;
-	export let showAuthor;
+	export let isFull = undefined;
+	export let showAuthor = undefined;
 	import './quote.scss';
-	export let category;
+	export let category = undefined;
 	import { createClient as client } from '$lib/SanityClient.js';
 	import { getCategory } from '$lib/functions';
 	import { onMount } from 'svelte';

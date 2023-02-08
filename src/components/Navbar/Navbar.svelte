@@ -7,7 +7,7 @@
 
 <nav class="navbar">
 	<ul>
-		<li><a href="/">{$settingData.name}</a></li>
+		<li><a style="color:#fff !important" href="/">{$settingData.name}</a></li>
 	</ul>
 	<div on:click={() => (nav = true)} class="menu">
 		<svg

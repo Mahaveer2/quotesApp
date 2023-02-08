@@ -14,6 +14,7 @@
 	quotes = quotes.filter((quote) => quote.active);
   let backgrounds = data.data;
   let currentIndex = 0;
+  let quoteArray = [quotes];
 
   setInterval(() => {
     if(currentIndex == backgrounds.length - 1){
@@ -36,9 +37,12 @@ document.addEventListener('click', () => {
 
     setTimeout(() => {
         cursor.classList.remove("expand");
-    }, 500)
+    }, 300)
 })
   });
+
+
+
 </script>
 <div class="cursor">
 </div>
@@ -56,8 +60,8 @@ document.addEventListener('click', () => {
 	<div class="container app-content">
 <slot></slot>
 
-<div style={`${$page.url.pathname == "/" ? "visibility:visible" : "visibility:hidden"}`}>
-<QuoteMain quotes={quotes}/>
+<div style={`${$page.url.pathname == "/" ? "visibility:visible" : "visibility:hidden"};position:relative;display:flex;`}>
+  <QuoteMain quotes={quotes}/>
 </div>
 </div>
 </div>

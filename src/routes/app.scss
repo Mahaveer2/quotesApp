@@ -24,7 +24,6 @@
 }
 
 .card-float{
-  animation-delay: var(--delay);
   position: absolute !important;
   display: flex;
   width: 100%;
@@ -32,7 +31,7 @@
   justify-self: center;
   align-items: center;
   flex-direction: column;
-  animation: float 60s linear infinite;
+  animation: float calc(5 * var(--speed)) linear infinite;
 }
 
 input,textarea,select{
@@ -46,14 +45,14 @@ input,textarea,select{
 
 @keyframes float {
   0%{
-    top: calc(var(--height) * -1);
+    transform: translateY(calc(var(--height) * -1));
   }
 
   99%{
-    top: 100%;
+    transform: translateY(10%);
   }
   100%{
-    top: calc(var(--height) * -1);
+    transform: translateY(calc(var(--height) * -1));
   }
 }
 
