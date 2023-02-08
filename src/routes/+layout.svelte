@@ -55,7 +55,7 @@
 	{@html settings.url}
 </svelte:head>
 <Navbar />
-<div class="app" style={`--font:${settings.rule};`}>
+<div class="app">
 	<div class="overlay"></div>
 		<img
 		src={backgrounds[currentIndex].imageUrl}

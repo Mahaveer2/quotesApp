@@ -1,3 +1,8 @@
+@font-face {
+  font-family: SegoeScript;
+  src: url("/segoesc.ttf");
+}
+
 * {
   margin: 0;
   box-sizing: border-box;
@@ -16,7 +21,6 @@ blockquote {
   border-radius: 8px;
   border:2px solid rgb(0, 255, 191) !important;
   display: flex;
-  font-family: var(--font) !important;
   justify-content: center;
   align-items: center;
   transition: .2s ease;
@@ -27,18 +31,17 @@ blockquote.notfull:hover{
   background-color: rgba(0,0,0,.5);
   cursor: pointer;
 }
-p,
-cite {
+blockquote .quote-text {
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  font-family: var(--font) !important;
+  font-family: SegoeScript !important;
   -moz-osx-font-smoothing: grayscale;
   width:100%;
 }
 
 blockquote p {
   color: #fff;
-  opacity: 1;font-family: var(--font) !important;
+  opacity: 1;
   font-size: 2.7rem;
   animation: fade 2s ease;
   padding-bottom: 2rem;
