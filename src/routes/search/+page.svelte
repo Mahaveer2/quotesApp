@@ -1,36 +1,34 @@
 <script>
-	import Fuse from 'fuse.js';
 	import Quote from '../../components/Quote/Quote.svelte';
 	import Transition from '../../components/Transition.svelte';
 	export let data;
 	let quotes = data.data;
 	let categories = data.categories;
 
-	let search = (search) => {
-		const options = {
-			keys: ['Author', 'quote']
-		};
+	async function postData(url = '', text) {
+		const formData =new FormData();
+		formData.append('search',text);
+		// Default options are marked with *
+		const response = await fetch(url, {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			body: formData
+		});
+		let json = await response.json();
+		quotes = json;
+		quotes = quotes;
+	}
 
-		// Create a new instance of Fuse
-		const fuse = new Fuse(data.data, options);
-
-		if (search == '') {
-			quotes = data.data;
-			quotes = quotes;
-		} else {
-			let res = fuse.search(search);
-			quotes = [];
-			res.forEach((e) => {
-				quotes.push(e.item);
-				quotes = quotes;
-			});
-		}
-	};
+	const search = text => {
+		setTimeout(() => {
+			postData('/api/search',text);
+		},300)
+	}
 </script>
 
 <h1>Search Quotes</h1>
 <form on:submit|preventDefault={() => {}}>
 	<input
+		name="search"
 		on:keyup={(e) => search(e.target.value)}
 		type="text"
 		placeholder="Search quotes by author or quote"
@@ -84,18 +82,19 @@
 		margin-top: 20px;
 		width: 100%;
 		overflow-x: scroll;
-		-ms-overflow-style: none;  /* Internet Explorer 10+ */
-    scrollbar-width: none;  /* Firefox */
+		-ms-overflow-style: none; /* Internet Explorer 10+ */
+		scrollbar-width: none; /* Firefox */
 	}
 
-	.flexer::-webkit-scrollbar { 
-    display: none;  /* Safari and Chrome */
-}
+	.flexer::-webkit-scrollbar {
+		display: none; /* Safari and Chrome */
+	}
 	.category {
 		font-size: 18px;
 		background-color: rgba(0, 0, 0, 0.8);
 		padding: 6px 20px;
 		border-radius: 20px;
+		display: flex; widows: 100%;
 		cursor: pointer;
 	}
 </style>

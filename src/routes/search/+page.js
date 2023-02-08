@@ -7,7 +7,7 @@ export async function load({ params }) {
   data = data.filter(quote => {
     return quote.active;
   })
-  
+
   return {
     data:data,
     categories:categories,

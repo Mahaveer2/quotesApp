@@ -6,8 +6,6 @@ export async function load({ params }) {
   let slug = params.quote;
   let data = await getQuote(slug);
 
-  console.log(data)
-
   if(data.length){
     return {
       quote:data

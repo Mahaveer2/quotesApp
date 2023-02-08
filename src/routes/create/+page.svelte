@@ -13,7 +13,6 @@
 	let desc = '';
 
 	export let data;
-	console.log(data);
 
 	const createQuote = ({ quote, author,_desc }) => {
 		const doc = {
