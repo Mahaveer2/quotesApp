@@ -6,12 +6,21 @@
   max-inline-size: 100%;
   block-size: auto;
 
+  .overlay{
+    width: 100%;
+    height: 100vh;
+    background:rgba(0,0,0,.5);
+    pointer-events: none;
+    z-index: -1;
+    position: fixed;
+  }
+
   .main-image{
     width: 100%;
     min-height: 100vh;
     pointer-events: none;
     object-fit: cover;
-    z-index: -1;
+    z-index: -2;
     position: fixed;
   }
 
