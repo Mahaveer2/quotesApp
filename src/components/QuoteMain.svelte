@@ -6,15 +6,6 @@
 	let g = 0;
 
 	let time = _quotes.length;
-
-	function addElement() {
-		_quotes = [..._quotes,...quotes];
-    setTimeout(addElement, (quotes.length * 4000));
-  }
-
-  setTimeout(() => {
-		addElement();
-	},(_quotes.length * 4000))
 </script>
 
 

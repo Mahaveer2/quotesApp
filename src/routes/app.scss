@@ -31,7 +31,10 @@
   justify-self: center;
   align-items: center;
   flex-direction: column;
-  animation: float calc(5 * var(--speed)) linear infinite;
+  animation-name: float;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-duration: calc(5 * var(--speed));
 }
 
 input,textarea,select{
@@ -43,19 +46,14 @@ input,textarea,select{
   overflow-y: hidden;
 }
 
-@keyframes float {
-  0%{
-    transform: translateY(calc(var(--height) * -1));
+@keyframes float{
+  0% {
+    transform: translateY(0);
   }
-
-  99%{
-    transform: translateY(10%);
-  }
-  100%{
-    transform: translateY(calc(var(--height) * -1));
+  100% {
+    transform: translateY(-50%);
   }
 }
-
 a{
   color: rgba(255,255,255,.8) !important;
 }
