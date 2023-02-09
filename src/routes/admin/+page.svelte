@@ -72,7 +72,7 @@
 
 
 <form on:submit={(e) => createCategory(e)} class={`${modal_c ? "modal" : "hide"}`}>
-  <a href="#" on:click={() => modal = false} style="font-size:40px;text-decoration:none;position:absolute;right:20%;top:10%">&times;</a>
+  <a href="#" on:click={() => modal_c = false} style="font-size:40px;text-decoration:none;position:absolute;right:20%;top:10%">&times;</a>
   <div style="width:50%">
 	<input required  name="slug" type="text" placeholder="Slug" />
   <input required  name="title" type="text" placeholder="Title" />
