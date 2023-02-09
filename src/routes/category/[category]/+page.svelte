@@ -4,7 +4,7 @@
 
   export let data;
   const { title } = data;
-  const quotes = data.quotes;
+  const quotes = data.quote.Quotes;
 
 </script>
 
