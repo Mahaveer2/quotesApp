@@ -12,40 +12,19 @@
 		let utterance = new SpeechSynthesisUtterance(text);
 		speechSynthesis.speak(utterance);
 	};
-	$: cat = [];
 
-	async function getCategories(ref) {
-		let data = await getCategory(ref);
-		return data;
-	}
-
-	onMount(async () => {
-		if (category) {
-			category.forEach(async (c) => {
-				cat.push(await getCategories(c._ref));
-				cat = cat;
-			});
-		}
-	});
-
-
-	const addView = (id) => {
-		client
-			.patch(id) // Document ID to patch
-			.set({ active: true }) // Shallow merge
-			.inc({ views: 1 }) // Increment field by count
-			.commit() // Perform the patch and return a promise
-			.then((updated) => {})
-			.catch((err) => {
-				console.error(err);
-			});
+	const addView = async (id) => {
+		const response = await fetch('/api/view', {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			body: JSON.stringify({id:id})
+		}); 
 	};
 
 </script>
 
 
 {#if !isFull}
-	<blockquote on:click={() => addView(quote._id)} class={`${!isFull && 'notfull'}`}>
+	<blockquote on:click={() => addView(quote.id)} class={`${!isFull && 'notfull'}`}>
 		<p class="quote-text">
 			{quote.quote}
 		</p>
@@ -67,15 +46,15 @@
 		<p  style="font-size:18px;font-family:arial;max-width:100%">{quote?.description}</p>
 		<span style="width:100px;height:0;background:red;padding:0;margin:0;">
 			<small style="color:#fff">
-				Views: {quote.views++}
+				Views: {quote.views}
 			</small>
 			
 		</span>
-		{#if category}
+		{#if quote.category}
 			<div class="flexer">
-				{#each cat as _category}
-					<a style="color:#fff" href={`../category/${_category[0].slug.current}`}>
-						<div class="category">{_category[0].title}</div>
+				{#each quote.category as _category}
+					<a style="color:#fff" href={`../category/${_category.id}`}>
+						<div class="category">{_category.title}</div>
 					</a>
 				{/each}
 			</div>

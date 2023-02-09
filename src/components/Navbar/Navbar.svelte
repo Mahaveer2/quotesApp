@@ -2,12 +2,11 @@
 	import './navbar.scss';
 	import NavLink from './NavLink.svelte';
 	let nav = false;
-	import { settingData } from "$lib/stores.js";
 </script>
 
 <nav class="navbar">
 	<ul>
-		<li><a style="color:#fff !important" href="/">{$settingData.name}</a></li>
+		<li><a style="color:#fff !important" href="/">ChrisQuotes</a></li>
 	</ul>
 	<div on:click={() => (nav = true)} class="menu">
 		<svg

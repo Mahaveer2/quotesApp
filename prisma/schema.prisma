@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Quote {
+  id          Int        @id @default(autoincrement())
+  Author String
+  quote       String
+  email       String?
+  name        String?
+  description String
+  views Int @default(0)
+  activated   Boolean @default(false)
+  category    Category[]
+}
+
+model Category {
+  id      Int    @id @default(autoincrement())
+  title   String
+  slug    String @unique
+  Quotes  Quote[]
+}
+
+model Backgrounds {
+  id    Int    @id @default(autoincrement())
+  title String
+  url   String
+}
+
+model Music {
+  id    Int    @id @default(autoincrement())
+  title String
+  src   String
+}
+
+model Admin{
+  id Int @id @default(autoincrement()) 
+  email String @unique
+  password String @db.VarChar(255)
+}
+
+model LoginSession{
+  id Int @id @default(autoincrement())
+  adminId String
+  token String @unique
+  date DateTime @default(now())
+  expires DateTime
+
+  @@index([token])
+}

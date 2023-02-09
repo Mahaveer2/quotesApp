@@ -4,7 +4,8 @@
 
   export let data;
   const { title } = data;
-  const quotes = data.data;
+  const quotes = data.quotes;
+
 </script>
 
 <h1>{title}</h1>
@@ -15,7 +16,7 @@
       style="width:100%;display:flex;
           justify-content:center;align-items:center;"
     >
-      <a style="text-decoration: none;width:80%;margin-bottom:20px;width:100%" href={`/quote/${quote.slug.current}`}>
+      <a style="text-decoration: none;width:80%;margin-bottom:20px;width:100%" href={`/quote/${quote.id}`}>
         <Quote category={quote.category} isFull={false} quote={quote} />
       </a>
     </div>

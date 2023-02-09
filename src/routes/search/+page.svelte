@@ -44,7 +44,7 @@
 	Categories
 	<div class="flexer">
 		{#each categories as category}
-			<a style="color:#fff;" href={`category/${category.slug.current}`}>
+			<a style="color:#fff;" href={`category/${category.id}`}>
 				<div class="category">{category.title}</div>
 			</a>
 		{/each}
@@ -57,7 +57,8 @@
 			style={`width:100%;display:flex;--delay:${i * 1000}ms;
 				justify-content:center;align-items:center;`}
 		>
-			<a class="card" href={`/quote/${quote.slug.current}`}>
+			<a class="card" href={`/quote/${quote.id}`}>
+				a quote
 					{quote.Author}
 					<p>
 						{quote.quote}

@@ -1,7 +1,5 @@
 <script>
 	import Transition from "../../components/Transition.svelte";
-  import { settingData } from "$lib/stores.js";
-  let url = "https://picsum.photos/1920/1080";
 </script>
 
 <Transition>
@@ -16,7 +14,7 @@
       </div>
       <div style="width: 100%;" class="wrapper center col"> 
         <h1 style="color:#fff">About</h1>
-        <p style="color:#fff">{$settingData.about}</p>
+        <p style="color:#fff">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa rerum, earum sunt suscipit tempore minima maiores totam in saepe? Ullam, aperiam veritatis exercitationem explicabo quis iste hic quia officiis facere?</p>
       </div>
     </div>
   </div>

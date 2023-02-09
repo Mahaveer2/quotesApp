@@ -1,0 +1,16 @@
+.quote{
+	background: rgba(0,0,0,.4);
+	padding: 20px;
+	color: #fff;
+	display: flex;
+	flex-direction: column;
+	transition: .2s ease;
+	height: 180px;
+	gap: 4px;
+	margin-bottom: 10px;
+	cursor: pointer;
+
+	&:hover{
+		background: rgba(0,0,0,.5);
+	}
+}

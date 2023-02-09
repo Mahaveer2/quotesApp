@@ -16,7 +16,7 @@
 				style="width:100%;display:flex;
 						justify-content:center;align-items:center;"
 			>
-				<a style="text-decoration: none;width:100%" href={`/quote/${quote.slug?.current}`}>
+				<a style="text-decoration: none;width:100%" href={`/quote/${quote.id}`}>
 					<Quote isFull={false} {quote} />
 				</a>
 			</div>

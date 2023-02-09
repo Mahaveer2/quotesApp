@@ -3,86 +3,47 @@
 	import { goto } from '$app/navigation';
 	import Transition from '../../components/Transition.svelte';
 	import { v4 as uuidv4 } from 'uuid';
-	let Author = '';
-	let handle = false;
-	let Quote = '';
-	let _category = '';
-	let msg = '';
-	let email = '';
-	let name = '';
-	let desc = '';
-
+	import { PrismaClient } from '@prisma/client';
 	export let data;
+	
+	let msg = "";
+	let categories = data.categories;
+	let busy = false;
 
-	const createQuote = ({ quote, author,_desc }) => {
-		const doc = {
-			_type: 'Quotes',
-			Author: author,
-			quote: quote,
-			email:email,
-			name:name,
-			active:false,
-			description:_desc,
-			views:0,
-			slug: {
-				_type: 'slug',
-				current: uuidv4()
-			},
-			category: [
-				{
-					_type: 'reference',
-					_ref: _category,
-					_key: uuidv4()
-				}
-			]
-		};
-
-		client
-			.create(doc)
-			.then((res) => {
-				msg = 'Thank you for your Original Quote, this is being verified by our Admin Team';
-				setTimeout(() => {
-					msg = '';
-				},3000)
-				handle = false;
-				Author = "";
-				email ="";
-				desc = "";
-				name ="";
-				Quote = "";
-				_category ="";
-			})
-			.catch((error) => console.error(error));
-	};
-
-	const handleSubmit = () => {
-		handle = true;
-		if ((Author == '') | (Author == ' ')) {
-			alert('Please enter valid Author name');
-			return false;
-		}
-		createQuote({ quote: Quote, author: Author ,_desc:desc});
-	};
+	
+	async function createQuote(e) {
+		e.preventDefault()
+		busy = true;
+		const formData = new FormData(e.target)
+		const response = await fetch("api/create", {
+			method: 'POST', // *GET, POST, PUT, DELETE, etc.
+			body: formData
+		});
+		e.target.reset()
+		busy = false;
+		msg = "Thank you for your Original Quote, this is being verified by our Admin Team"
+		setTimeout(() => msg="",2000);
+	}
 </script>
 
 <h1>Post a Quote</h1>
 
-<form aria-busy={handle} aria-disabled={handle} on:submit|preventDefault={handleSubmit}>
+<form aria-busy={busy} aria-disabled={busy} on:submit={e => createQuote(e)}>
 	<p style="color: #fff;">Do you have an original Quote you would like to see it published. Simply Type in your Quote, once our Team verifies it is original and from you, we will post on the site.</p>
-	<input required bind:value={email} type="email" placeholder="Email" />
-	<input required bind:value={name} type="text" placeholder="Name" />
-	<input required bind:value={Author} type="text" placeholder="Author" />
-	<textarea required bind:value={Quote} type="text" placeholder="Quote" />
-	<textarea required bind:value={desc} type="text" placeholder="Description" />
-	<select required bind:value={_category} name="" id="">
-		{#each data.data as category}
-			<option value={category._id} placeholder="Select a category">{category.title}</option>
+	<input required  name="email" type="email" placeholder="Email" />
+	<input required  name="name" type="text" placeholder="Name" />
+	<input required  name="author" type="text" placeholder="Author" />
+	<textarea required  name="quote" type="text" placeholder="Quote" />
+	<textarea required name="description" type="text" placeholder="Description" />
+	<select required  name="categoryid" id="">
+		{#each categories as category}
+			<option value={category.id} placeholder="Select a category">{category.title}</option>
 		{/each}
 		<option disabled value="Select a category" placeholder="Select a category"
 			>Select a category</option
 		>
 	</select>
-	<button class="btn-transparent" aria-busy={handle} disabled={handle} type="submit"
+	<button class="btn-transparent" aria-busy={busy} disabled={busy} type="submit"
 		>Submit Quote</button
 	>
 </form>
