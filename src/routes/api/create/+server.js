@@ -1,5 +1,5 @@
 
-import Fuse from 'fuse.js';import { getQuotes } from '$lib/functions';
+import Fuse from 'fuse.js';
 import { isAdmin } from "$lib/isAdmin";
 import { json } from '@sveltejs/kit';
 
