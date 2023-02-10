@@ -5,6 +5,8 @@
   let quotes = [];
   let loading = false;
 	let sortBypending = false;
+	let sortBytrending = false;
+	let isSortedByTrending = false;
 	let original_Quotes;
 
   async function postData(url = '', text) {
@@ -20,7 +22,7 @@
 		quotes = json;
 		original_Quotes = json;
 		original_Quotes = original_Quotes;
-		quotes = quotes;
+		quotes = quotes.reverse();
     loading = false;
 	}
 
@@ -30,6 +32,20 @@
 			quotes= quotes.filter(quote => !quote.activated)
 			quotes = quotes;
 		}else{
+			quotes = original_Quotes;
+			quotes = quotes;
+		}
+	}
+
+	let sortTrending = (sortBytrending) => {
+		isSortedByTrending = !isSortedByTrending;
+		 sortBytrending = !sortBytrending;
+		if(sortBytrending){
+			quotes= quotes.sort((a,b) => b.views - a.views);
+			quotes = quotes.reverse();
+			quotes = quotes;
+		}
+		if(!sortBytrending){
 			quotes = original_Quotes;
 			quotes = quotes;
 		}
@@ -45,10 +61,21 @@
 		}
 	}
   postData('/api/search',"");
+
+	setInterval(() => {
+    if(search == "" && !sortBypending && !isSortedByTrending){
+			loading = false;
+			postData('/api/search',""); 
+			loading = false;
+		}
+  },6000)
 </script>
 
 <input on:keyup={() => searchDB(search)} bind:value={search} type="text" placeholder="Search">
-<button on:click={() => sort()} style="width:120px;height:30px;border-radius:20px;flex-direction:column;justify-content:center;align-items:center;">Pending</button>
+<div style="display:flex;gap:5px;overflow-x:scroll">
+	<button class="chip" class:active={sortBypending} on:click={() => sort()} style="width:200px;height:30px;border-radius:20px;flex-direction:column;justify-content:center;align-items:center;">Sort by pending</button>
+  <button class="chip" class:active={isSortedByTrending} on:click={() => sortTrending(sortBytrending)} style="width:200px;height:30px;border-radius:20px;flex-direction:column;justify-content:center;align-items:center;">Sort by trending</button>
+</div>
 <div class="grid-own" aria-busy={loading}>
   {#each quotes as quote}
 <a href={`admin/quote/${quote.id}`} style="text-decoration:none;color:#fff !important;height:180px">
@@ -72,5 +99,16 @@
 
 	@media screen and (max-width:768px){
 		.grid-own{grid-template-columns: repeat(1,1fr);}
+	}
+
+	.chip{
+		background:rgba(0,0,0,0.4);color:#fff;
+		border:1px solid rgba(0,0,0,0.1);
+		transition: .2s ease;
+	}
+
+	.chip.active{
+		background:#fff;
+		color:#000;
 	}
 </style>

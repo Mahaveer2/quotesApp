@@ -5,7 +5,7 @@
   import { goto } from '$app/navigation';
 
   export let data;
-  let { id,email,quote,name,category,description,Author,activated }= data.quote;
+  let { id,email,views,quote,name,category,description,Author,activated }= data.quote;
   const {categories} = data;
 
   async function postData(formData) {
@@ -47,7 +47,7 @@
   })
 </script>
 
-<a href="../../admin" style="position:absolute;"
+<a href="../../admin" style="position:absolute;height:20px"
 	><svg
 		xmlns="http://www.w3.org/2000/svg"
 		fill="none"
@@ -61,6 +61,7 @@
 </a>
 
 <form on:submit={(e) => handleSubmit(e)} style="height:900px !important;padding-top:60px">
+	<p>{views} views</p>
 	<input required type="text" name="author" bind:value={Author} placeholder="Author" />
 	<input type="hidden" name="id" value={id} />
 	<input type="email" name="email" bind:value={email} placeholder="Email" />
