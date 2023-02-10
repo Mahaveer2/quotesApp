@@ -7,6 +7,7 @@
 	let image;
 	let input;
 	let form;
+	let busy = false;
 	let placeholder;
 	let backgrounds = [];
 
@@ -45,7 +46,7 @@
 
 	async function uploadFunction(imgBase64) {
 		const data = {};
-		console.log('uploading');
+		busy = true;
 		showImage = false;
 		const imgData = imgBase64.split(',');
 		data['tokens'] = localStorage.getItem('admin');
@@ -58,6 +59,7 @@
 			},
 			body: JSON.stringify(data)
 		});
+		busy = false;
 		let json = res.json();
 		console.log(json);
 	}
@@ -104,6 +106,7 @@
 		<input
 			bind:this={input}
 			on:change={onChange}
+			disabled={busy}
 			required
 			class="hidden contrast"
 			name="image"
@@ -111,7 +114,7 @@
 			type="file"
 			accept=".png,.jpg"
 		/>
-		<button class="upload-btn contrast" type="submit">Upload</button>
+		<button aria-busy={busy} disabled={busy} class="upload-btn contrast" type="submit">Upload</button>
 	</form>
 	<div bind:this={container}>
 		{#if showImage}
@@ -130,3 +133,17 @@
 		{/each}
 	</div>
 </div>
+
+<style>
+	.grid{
+		display:grid;
+		grid-template-columns: repeat(3,1fr) !important;
+	}
+
+	@media screen and (max-width: 768px) {
+		.grid{
+		display:grid;
+		grid-template-columns: repeat(1,1fr) !important;
+	}
+	}
+</style>
