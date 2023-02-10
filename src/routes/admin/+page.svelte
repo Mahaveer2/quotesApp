@@ -116,6 +116,7 @@
     height: 100%;
     width: 100%;
     display: flex;
+    background-color: rgba(0, 0, 0, .7);
     justify-content: center;
     align-items: center;
     flex-direction: column;

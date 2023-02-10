@@ -71,6 +71,8 @@
 			method: 'POST',
 			body: formData
 		});
+		e.target.reset();
+		showImage = false;
 		let json = await res.json();
 		loadBackgrounds();
 	};
