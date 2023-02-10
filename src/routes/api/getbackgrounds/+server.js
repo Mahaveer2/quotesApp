@@ -10,6 +10,10 @@ const getImages = (dir) => {
 };
 
 export function GET() {
+ try{
   const images = getImages('static/backgrounds');
   return json(images);
+ }catch(e){
+  console.log(e)
+ }
 }
