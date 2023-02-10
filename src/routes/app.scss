@@ -35,15 +35,12 @@
   position: absolute !important;
   display: flex;
   width: 100%;
-  gap: 20px;
+  gap: 20px;;
   justify-self: center;
   align-items: center;
   flex-direction: column;
 }
 
-.card-float .quote-card-main{
-  animation: float 35s linear infinite;
-}
 
 input,textarea,select{
   background-color: rgba(0,0,0,.5);
@@ -54,14 +51,6 @@ input,textarea,select{
   overflow-y: hidden;
 }
 
-@keyframes float{
-  0% {
-    transform: translateY(0%);
-  }
-  100% {
-    transform: translateY(-550%);
-  }
-}
 a{
   color: rgba(255,255,255,.8) !important;
 }

@@ -22,6 +22,7 @@ blockquote {
   border:2px solid rgb(0, 255, 191) !important;
   display: flex;
   justify-content: center;
+  height: var(--height);
   align-items: center;
   transition: .2s ease;
   flex-direction: column;
@@ -37,6 +38,7 @@ blockquote .quote-text {
   font-family: SegoeScript !important;
   -moz-osx-font-smoothing: grayscale;
   width:100%;
+  font-size: 3vw;
 }
 
 blockquote p {

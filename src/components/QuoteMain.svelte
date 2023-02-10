@@ -9,21 +9,21 @@
 </script>
 
 
-<div style="height:100vh;width:100%;display:flex;position:relative" class="card-container">
-	<div class="card-float" bind:clientHeight={height} style={`--height:${height}px;width:100%;display:flex;--speed:${_quotes.length}s;`} >
+<div style="height:100vh;width:100%;display:flex;position:relative;flex-direction:column;gap:10px;" class="card-container">
+	<div class="card-float" bind:clientHeight={height} style={`--height:300px;width:100%;display:flex;--speed:${_quotes.length}s;`} >
 		{#each _quotes as quote}
 		<div
 			style="width:100%;display:flex;
 					justify-content:center;align-items:center;"
 		>
-			<a class="quote-card-main" style="text-decoration: none;width:100%" href={`/quote/${quote.id}`}>
+			<a class="quote-card-main" style="text-decoration: none;width:100%;" href={`/quote/${quote.id}`}>
 				<Quote isFull={false} {quote} />
 			</a>
 		</div>
 	{/each}
 	{#each _quotes as quote}
 		<div
-			style="width:100%;display:flex;
+			style="width:100%;display:flex;height:100%;
 					justify-content:center;align-items:center;"
 		>
 			<a class="quote-card-main" style="text-decoration: none;width:100%" href={`/quote/${quote.id}`}>

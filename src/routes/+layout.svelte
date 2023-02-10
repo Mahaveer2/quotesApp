@@ -5,6 +5,7 @@
 	import Loader from '../components/Loader/Loader.svelte';
 	import Navbar from '../components/Navbar/Navbar.svelte';
 	import './app.scss';
+	import "./anim.css";
 	import { page } from '$app/stores';
 	import QuoteMain from '../components/QuoteMain.svelte';
 	import moment from 'moment';

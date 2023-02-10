@@ -7,6 +7,7 @@
 	export let data;
 	
 	let msg = "";
+	let chars = "";
 	let categories = data.categories;
 	let busy = false;
 
@@ -24,6 +25,19 @@
 		msg = "Thank you for your Original Quote, this is being verified by our Admin Team"
 		setTimeout(() => msg="",2000);
 	}
+
+	function countChar(){
+
+function truncateString(str, num) {
+  if (str.length <= num) {
+    return str
+  }
+  return str.slice(0, num)
+}
+		if(chars.length >= 100){
+
+		}
+	}
 </script>
 
 <h1>Post a Quote</h1>
@@ -33,7 +47,7 @@
 	<input required  name="email" type="email" placeholder="Email" />
 	<input required  name="name" type="text" placeholder="Name" />
 	<input required  name="author" type="text" placeholder="Author" />
-	<textarea required  name="quote" type="text" placeholder="Quote" />
+	<textarea bind:value={chars} maxlength="100" required  name="quote" on:keydown={countChar} type="text" placeholder="Quote" />
 	<textarea required name="description" type="text" placeholder="Description" />
 	<select required  name="categoryid" id="">
 		{#each categories as category}
