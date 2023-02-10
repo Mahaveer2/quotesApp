@@ -40,10 +40,10 @@
   justify-self: center;
   align-items: center;
   flex-direction: column;
-  animation-name: float;
-    animation-timing-function: linear;
-    animation-iteration-count: infinite;
-    animation-duration: calc(5 * var(--speed));
+}
+
+.card-float .quote-card-main{
+  animation: float 15s linear infinite;
 }
 
 input,textarea,select{
@@ -57,10 +57,10 @@ input,textarea,select{
 
 @keyframes float{
   0% {
-    transform: translateY(0);
+    transform: translateY(0%);
   }
   100% {
-    transform: translateY(-80%);
+    transform: translateY(-550%);
   }
 }
 a{

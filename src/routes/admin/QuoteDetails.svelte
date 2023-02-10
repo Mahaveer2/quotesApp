@@ -1,4 +1,5 @@
 <script>
+	import { onMount } from "svelte";
   import "./admin.scss";
   let search = "";
   let searching = false;
@@ -23,6 +24,7 @@
 		original_Quotes = json;
 		original_Quotes = original_Quotes;
 		quotes = quotes.reverse();
+		quotes = quotes;
     loading = false;
 	}
 
@@ -62,13 +64,15 @@
 	}
   postData('/api/search',"");
 
-	setInterval(() => {
+	onMount(() => {
+		setInterval(() => {
     if(search == "" && !sortBypending && !isSortedByTrending){
 			loading = false;
 			postData('/api/search',""); 
 			loading = false;
 		}
   },6000)
+	})
 </script>
 
 <input on:keyup={() => searchDB(search)} bind:value={search} type="text" placeholder="Search">
