@@ -11,6 +11,7 @@
 	let bgs=[];
 
 	export let data;
+	const trending = data.data;
 	let musicUrl;
 	const fetchBackgrounds = async () => {
 		const res = await fetch('/api/getbackgrounds/',
@@ -89,6 +90,14 @@
 			};position:${$page.url.pathname == '/gallery' ? '' : 'relative'};display:flex;`}
 		>
 			<QuoteMain {quotes} />
+		</div>
+
+		<div
+			style={`${
+				$page.url.pathname == '/trending' ? 'visibility:visible;height:100%' : 'visibility:hidden;height:0;'
+			};position:${$page.url.pathname == '/gallery' ? '' : 'relative'};display:flex;`}
+		>
+			<QuoteMain quotes={trending} />
 		</div>
 	</div>
 </div>
