@@ -18,7 +18,7 @@
 
   ul li a{
     cursor: pointer;
-    color: #d8d8d8 !important;
+    color: #b9b9b9 !important;
   }
 
   ul li:active,ul li:focus{
@@ -71,7 +71,9 @@ nav .menu,.close{
     display: flex;
     margin-top: 50px;
     flex-direction: column;
-    padding: 100px;
+    padding: 150px 20px;
+    margin-bottom: 220px;
+    margin-top: 20px;
   }
 
   nav .sidenav.active{

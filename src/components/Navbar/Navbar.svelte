@@ -34,6 +34,9 @@
 			<NavLink title="Create Quote" href="/create" />
 		</li>
 		<li on:click={() => (nav = false)}>
+			<NavLink title="Gallery" href="/gallery" />
+		</li>
+		<li on:click={() => (nav = false)}>
 			<NavLink title="Trending" href="/trending" />
 		</li>
 		<li on:click={() => (nav = false)}>

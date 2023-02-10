@@ -62,13 +62,13 @@
 		alt={backgrounds[currentIndex].Name}
 		class="main-image"
 	/>
-	<div class="container app-content">
+	<div class="container app-content" style={`position:${$page.url.pathname == '/gallery' ? '':'relative'};`}>
 		<slot />
 
 		<div
 			style={`${
 				$page.url.pathname == '/' ? 'visibility:visible;height:100%' : 'visibility:hidden;height:0;'
-			};position:relative;display:flex;`}
+			};position:${$page.url.pathname == '/gallery' ? '':'relative'};display:flex;`}
 		>
 			<QuoteMain {quotes} />
 		</div>
