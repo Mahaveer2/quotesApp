@@ -16,7 +16,7 @@
 		const res = await fetch('/api/getbackgrounds/',
 		{
 			method:'GET'
-		});
+		}).catch(e => console.log(e));
 		const data = await res.json();
 		if (data.length) {
 			bgs= data;
