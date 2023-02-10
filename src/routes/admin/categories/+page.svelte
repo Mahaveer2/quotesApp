@@ -21,9 +21,7 @@
 
 {#each categories as category }
   <div class="category" style="">
-    
     <strong>{category.title}</strong>s
-    <p>{category.slug}</p>
     <button
     on:click={() => deleteQuote(category.id)}
     style="background:red;width:100px;outline:none;border:none;height:40px;display:flex;justify-content:Center;
