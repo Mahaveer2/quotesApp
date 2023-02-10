@@ -5,7 +5,8 @@
 
   const checkAdmin = async () => {
     busy = true;
-    let formData = new FormData();
+    if(localStorage.getItem("admin")){
+      let formData = new FormData();
     formData.append("token",localStorage.getItem("admin"))
     let res = await fetch("/api/authorize",{
       method:"POST",
@@ -13,11 +14,19 @@
     });
     let json = await res.json();
     busy = false;
-    adminState.set({
+    if(json.status == 200){
+      adminState.set({
         email:json.email,
         isAuthenticated:true,
         token:localStorage.getItem("admin"),
     })
+    }
+    }else{
+      adminState.set({
+        isAuthenticated:false,
+      })
+      busy = false;
+    }
   }
   onMount(async () => {
     checkAdmin();
@@ -39,9 +48,12 @@
       adminState.set({
         email:json.email,
         isAuthenticated:true,
-        token:json.token
       })
     }else{
+      adminState.set({
+        isAuthenticated:false,
+      })
+      busy = false;
       alert("Invalid credentials")
     }
   }
@@ -49,7 +61,6 @@
 <div aria-busy={busy} style="width:100%;">
 
 {#if $adminState.isAuthenticated}
-  
 <slot>
 </slot>
 {:else}
