@@ -2,7 +2,6 @@ import _, { map } from 'underscore';
 import { PrismaClient } from '@prisma/client'
 
 const prisma = new PrismaClient()
-export const trailingSlash = 'always';
 export async function load({ params }) {
   let quotes = await prisma.quote.findMany({
     where:{
