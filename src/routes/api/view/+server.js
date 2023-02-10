@@ -1,12 +1,12 @@
 
-import { PrismaClient } from '@prisma/client'
+import client from "$lib/client";;
 import Fuse from 'fuse.js';
 import client from '$lib/client';
 
 export const POST = async ({request}) => {
 
   const form = await request.json();
-  const result = await prisma.quote.update({
+  const result = await client.quote.update({
     where: {
       id:form.id,
     },

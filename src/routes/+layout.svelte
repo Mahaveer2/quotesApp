@@ -19,7 +19,7 @@
 		}).catch(e => console.log(e));
 		const data = await res.json();
 		if (data.length) {
-			bgs= data;
+			bgs = data;
 			bgs = bgs;
 		}
 	};
@@ -70,9 +70,9 @@
 <Navbar />
 <div class="app">
 	<div class="overlay" />
-	{#if bgs}
+	{#if bgs[currentIndex]}
 		<img
-			src={`/backgrounds/${bgs[currentIndex]}`}
+			src={`${bgs[currentIndex].url}`}
 			alt="background image"
 			class="main-image"
 		/>

@@ -24,11 +24,13 @@
 	"dependencies": {
 		"@prisma/client": "^4.10.0",
 		"@sanity/client": "^4.0.1",
+		"cloudinary": "^1.33.0",
 		"fuse.js": "^6.6.2",
 		"moment": "^2.29.4",
 		"nprogress": "^0.2.0",
 		"sass": "^1.57.1",
 		"underscore": "^1.13.6",
-		"uuid": "^9.0.0"
+		"uuid": "^9.0.0",
+		"zxcvbn": "^4.4.2"
 	}
 }
