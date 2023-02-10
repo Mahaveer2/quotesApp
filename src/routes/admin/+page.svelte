@@ -71,7 +71,7 @@
 			>Select a category</option
 		>
 	</select>
-	<button class="btn-transparent" aria-busy={busy} disabled={busy} type="submit"
+	<button class="btn-transparent contrast" aria-busy={busy} disabled={busy} type="submit"
 		>Submit Quote</button
 	>
   </div>
@@ -82,7 +82,7 @@
   <a href="#" on:click={() => modal_c = false} style="font-size:40px;text-decoration:none;position:absolute;right:20%;top:10%">&times;</a>
   <div style="width:50%">
   <input required  name="title" type="text" placeholder="Title" />
-	<button class="btn-transparent" aria-busy={busy} disabled={busy} type="submit"
+	<button class="btn-transparent contrast" aria-busy={busy} disabled={busy} type="submit"
 		>Submit Category</button
 	>
   </div>

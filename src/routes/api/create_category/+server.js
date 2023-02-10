@@ -9,16 +9,6 @@ export const POST = async ({request}) => {
   const formData = await request.formData();
   if(isAdmin(formData.get('token'))){
 
-    const category = await client.category.findUnique({
-      where:{
-        slug: formData.get('slug')
-      }
-    })
-
-    if(category){
-      return json({success:false,msg:"Slug Already taken" })
-    }
-
     const response = await client.category.create({
       data:{
         title:formData.get('title'),
