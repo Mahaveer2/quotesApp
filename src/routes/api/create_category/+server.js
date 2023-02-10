@@ -22,7 +22,7 @@ export const POST = async ({request}) => {
     const response = await client.category.create({
       data:{
         title:formData.get('title'),
-        slug:formData.get('slug')
+        slug:crypto.randomUUID()
       }
     })
     return json({success:true,msg:"Created category"});

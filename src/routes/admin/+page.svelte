@@ -18,10 +18,10 @@
 			body: formData
 		});
     let json = await response.json();
-    goto(json.id)
 		e.target.reset()
 		busy = false;
     modal = false;
+    await invalidate("/admin");
 	}
 
   async function createCategory(e) {
@@ -34,9 +34,9 @@
 			body: formData
 		});
     let json = await response.json();
-    modal_c = false;
+      modal_c = false;
     goto("admin/categories");
-		e.target.reset()
+		e.target.reset() 
 		busy = false;
 	}
 </script>
@@ -74,11 +74,9 @@
 <form on:submit={(e) => createCategory(e)} class={`${modal_c ? "modal" : "hide"}`}>
   <a href="#" on:click={() => modal_c = false} style="font-size:40px;text-decoration:none;position:absolute;right:20%;top:10%">&times;</a>
   <div style="width:50%">
-	<input required  name="slug" type="text" placeholder="Slug" />
   <input required  name="title" type="text" placeholder="Title" />
-
 	<button class="btn-transparent" aria-busy={busy} disabled={busy} type="submit"
-		>Submit Quote</button
+		>Submit Category</button
 	>
   </div>
 </form>
