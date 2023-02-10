@@ -1,5 +1,7 @@
 <script>
 	import Transition from "../../components/Transition.svelte";
+  export let data;
+  let { about }= data;
 </script>
 
 <Transition>
@@ -14,7 +16,7 @@
       </div>
       <div style="width: 100%;" class="wrapper center col"> 
         <h1 style="color:#fff">About</h1>
-        <p style="color:#fff">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa rerum, earum sunt suscipit tempore minima maiores totam in saepe? Ullam, aperiam veritatis exercitationem explicabo quis iste hic quia officiis facere?</p>
+        <p style="color:#fff">{about}</p>
       </div>
     </div>
   </div>
