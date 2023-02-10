@@ -1,7 +1,6 @@
 
 import client from "$lib/client";;
 import Fuse from 'fuse.js';
-import client from '$lib/client';
 
 export const POST = async ({request}) => {
 
