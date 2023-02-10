@@ -5,7 +5,7 @@ import client from '$lib/client';
 export async function load({ params }) {
   let slug = params.category;
   
-  let data = await prisma.category.findUnique({
+  let data = await client.category.findUnique({
     where:{
       id:Number(slug)
     },
