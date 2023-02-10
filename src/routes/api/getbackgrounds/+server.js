@@ -14,6 +14,7 @@ export function GET() {
   const images = getImages('static/backgrounds');
   return json(images);
  }catch(e){
+  return json(e);
   console.log(e)
  }
 }
