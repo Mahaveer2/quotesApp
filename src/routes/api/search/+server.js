@@ -1,9 +1,7 @@
 import Fuse from 'fuse.js';
-import { getQuotes } from '$lib/functions';
-import { PrismaClient } from '@prisma/client';
+import client from '$lib/client';
 
 export const POST = async ({request}) => {
-	const client = new PrismaClient();
   const form = await request.formData();
   const data = await client.quote.findMany();
 	let searchTxt = form.get('search');

@@ -1,8 +1,8 @@
 import { PrismaClient } from "@prisma/client"
 import { json } from "@sveltejs/kit";
+import client from '$lib/client';
 
 export const GET = async () => {
-  const client = new PrismaClient();
 
   let data = await client.quote.findMany({
     orderBy:[{views:'desc'}],

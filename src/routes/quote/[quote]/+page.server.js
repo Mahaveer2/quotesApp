@@ -1,14 +1,12 @@
 import { error } from '@sveltejs/kit';
-import { getQuote } from "$lib/functions";
 import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import client from '$lib/client';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
   let slug = params.quote;
   
-  let data = await prisma.quote.findUnique({
+  let data = await client.quote.findUnique({
     where:{
       id:Number(slug),
     },

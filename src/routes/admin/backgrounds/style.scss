@@ -1,0 +1,43 @@
+.background{
+  width: 100%;
+  border-radius: 20px;
+  padding: 20px;
+  height: 430px;
+  background: rgba(0,0,0,.4);
+  img{
+    width: 100%;
+    object-fit: cover;
+    height: 300px;
+    border-radius: 20px;
+  }
+}
+
+.delete{
+  background-color: red;
+  color: #fff;border: none;
+  margin-top: 20px;
+}
+
+.abort{
+  width: 100px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  background-color: red;
+  border: none;
+  margin:20px;
+}
+
+.preview{
+  width: 400px;
+  border-radius: 20px;
+}
+
+.myform{
+  padding:20px;
+  background-color: rgba(0,0,0,.4);
+  border-radius: 20px;
+  color: #fff;
+}

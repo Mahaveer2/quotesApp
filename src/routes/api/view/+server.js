@@ -1,10 +1,7 @@
 
 import { PrismaClient } from '@prisma/client'
 import Fuse from 'fuse.js';
-import { getQuotes } from '$lib/functions';
-
-
-const prisma = new PrismaClient() 
+import client from '$lib/client';
 
 export const POST = async ({request}) => {
 

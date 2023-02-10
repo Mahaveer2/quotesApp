@@ -1,8 +1,6 @@
 <script>
-	import { createClient as client } from '$lib/SanityClient';
 	import { goto } from '$app/navigation';
 	import Transition from '../../components/Transition.svelte';
-	import { v4 as uuidv4 } from 'uuid';
 	import { PrismaClient } from '@prisma/client';
 	export let data;
 	

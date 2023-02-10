@@ -1,10 +1,9 @@
 import { PrismaClient } from '@prisma/client';
 import Fuse from 'fuse.js';
-import { getQuotes } from '$lib/functions';
 import { isAdmin } from "$lib/isAdmin";
 import { json } from '@sveltejs/kit';
+import client from '$lib/client';
 
-const client = new PrismaClient();
 export const POST = async ({request}) => {
   const formData = await request.formData();
   if(isAdmin(formData.get('token'))){

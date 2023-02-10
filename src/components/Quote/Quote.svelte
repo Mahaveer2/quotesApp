@@ -4,8 +4,6 @@
 	export let showAuthor = undefined;
 	import './quote.scss';
 	export let category = undefined;
-	import { createClient as client } from '$lib/SanityClient.js';
-	import { getCategory } from '$lib/functions';
 	import { onMount } from 'svelte';
 	
 	const speak = (text) => {

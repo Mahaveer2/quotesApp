@@ -1,7 +1,5 @@
 import { error } from '@sveltejs/kit';
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import client from '$lib/client';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {

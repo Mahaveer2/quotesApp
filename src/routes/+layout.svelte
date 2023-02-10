@@ -1,6 +1,5 @@
 <script>
 	import { onMount } from 'svelte';
-	import { getBackgrounds, getAudio, getQuotes, getSiteSettings } from '$lib/functions';
 	import AudioPlayer from '../components/AudioPlayer.svelte';
 	import Loader from '../components/Loader/Loader.svelte';
 	import Navbar from '../components/Navbar/Navbar.svelte';
@@ -9,25 +8,30 @@
 	import { page } from '$app/stores';
 	import QuoteMain from '../components/QuoteMain.svelte';
 	import moment from 'moment';
+	let bgs=[];
 
 	export let data;
-	let { settings } = data;
 	let musicUrl;
+	const fetchBackgrounds = async () => {
+		const res = await fetch('/api/getbackgrounds/',
+		{
+			method:'GET'
+		});
+		const data = await res.json();
+		if (data.length) {
+			bgs= data;
+			bgs = bgs;
+		}
+	};
 
+	onMount(() => fetchBackgrounds());
 	let quotes = data.quotes;
-	let backgrounds;
-	onMount(async () => {
-		backgrounds = await getBackgrounds();
-		backgrounds = backgrounds;
-		musicUrl = await getAudio();
-		musicUrl = musicUrl;
-	});
 	let currentIndex = 0;
 	let quoteArray = [quotes];
 
 	setInterval(() => {
-		if(backgrounds){
-			if (currentIndex == backgrounds.length -1 ) {
+		if(bgs){
+			if (currentIndex == bgs.length -1 ) {
 			currentIndex = 0;
 		} else {
 			currentIndex++;
@@ -59,19 +63,17 @@
 <div class="cursor" />
 <Loader />
 <svelte:head>
-	<title>{settings.name}</title>
-	<link rel="icon" href={settings.logo} />
-	<link rel="apple-touch-icon image_src" href={settings.logo} />
-	{@html settings.head}
-	{@html settings.url}
+	<title>ChrisQuotes</title>
+	<link rel="icon" href='/favicon.png' />
+	<link rel="apple-touch-icon image_src" href='/favicon.png' />
 </svelte:head>
 <Navbar />
 <div class="app">
 	<div class="overlay" />
-	{#if backgrounds}
+	{#if bgs}
 		<img
-			src={backgrounds[currentIndex].imageUrl}
-			alt={backgrounds[currentIndex].Name}
+			src={`/backgrounds/${bgs[currentIndex]}`}
+			alt="background image"
 			class="main-image"
 		/>
 	{/if}
@@ -91,9 +93,9 @@
 	</div>
 </div>
 
-{#if musicUrl}
-	<AudioPlayer {play} src={`${musicUrl[0].audio}`} />
-{/if}
+
+	<AudioPlayer {play} src={`/music.mp3`} />
+
 
 <style>
 	.app blockquote {
