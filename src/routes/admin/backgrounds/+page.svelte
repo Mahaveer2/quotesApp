@@ -67,7 +67,7 @@
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const formData = new FormData(e.target);
-		formData.append('token', localStorage.getItem('token'));
+		formData.append('token', localStorage.getItem('admin'));
 
 		let res = await fetch(`/api/postbackground`, {
 			method: 'POST',
@@ -87,7 +87,7 @@
 		backgrounds = [];
 		const formData = new FormData();
 		formData.append('path', path);
-		formData.append('token', localStorage.getItem('token'));
+		formData.append('token', localStorage.getItem('admin'));
 
 		let res = await fetch(`/api/deletebackground`, {
 			method: 'POST',
