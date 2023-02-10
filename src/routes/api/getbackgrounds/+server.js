@@ -9,7 +9,7 @@ const getImages = (dir) => {
   });
 };
 
-export async function GET() {
+export function GET() {
   const images = getImages('static/backgrounds');
   return json(images);
 }
