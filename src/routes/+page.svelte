@@ -5,5 +5,3 @@
 	import Transition from '../components/Transition.svelte';
 
 </script>
-
-<h1>Welcome to Quotic</h1>

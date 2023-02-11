@@ -93,8 +93,9 @@
 		<div
 			style={`${
 				$page.url.pathname == '/' ? 'visibility:visible;height:100%' : 'visibility:hidden;height:0;'
-			};position:${$page.url.pathname == '/gallery' ? '' : 'relative'};display:flex;`}
+			};position:${$page.url.pathname == '/gallery' ? '' : 'relative'};`}
 		>
+		<h1>Welcome to {site.title}</h1>
 			<QuoteMain {quotes} />
 		</div>
 
