@@ -32,7 +32,7 @@ function truncateString(str, num) {
   }
   return str.slice(0, num)
 }
-		if(chars.length >= 100){
+		if(chars.length >= 200){
 
 		}
 	}
@@ -42,7 +42,7 @@ function truncateString(str, num) {
 
 <form aria-busy={busy} aria-disabled={busy} on:submit={e => createQuote(e)}>
 	<p style="color: #fff;">Do you have an original Quote you would like to see it published. Simply Type in your Quote, once our Team verifies it is original and from you, we will post on the site.</p>
-	<textarea bind:value={chars} maxlength="100" required  name="quote" on:keydown={countChar} type="text" placeholder="Quote" />
+	<textarea bind:value={chars} maxlength="200" required  name="quote" on:keydown={countChar} type="text" placeholder="Quote" />
 	<textarea required name="description" type="text" placeholder="Description" />
 	<input required  name="author" type="text" placeholder="Author" />
 	<input required  name="name" type="text" placeholder="Full name" />
