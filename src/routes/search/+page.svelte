@@ -58,11 +58,10 @@
 				justify-content:center;align-items:center;`}
 		>
 			<a class="card" href={`/quote/${quote.id}`}>
-				a quote
+				<p>
+					{quote.quote}
+				</p>
 					{quote.Author}
-					<p>
-						{quote.quote}
-					</p>
 			</a>
 		</div>
 	</Transition>
