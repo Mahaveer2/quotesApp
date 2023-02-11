@@ -34,7 +34,7 @@
           <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
       </svg>
       </div>
-      <div class="center">
+      <div class="center-about">
         <h2>About</h2>
           <p id="text">Welcome to our website for quick and easy online quotes. Our expert team offers the best deals and discounts to fit your needs. With industry experience, we find the perfect solution. Customer satisfaction is our top priority. Thank you for choosing us.          </p>
       </div>

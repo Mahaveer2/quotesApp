@@ -1,5 +1,5 @@
 
-.center{
+.center-about{
   width: 100%;
   display: flex;
 flex-direction:column;
@@ -9,13 +9,13 @@ flex-direction:column;
 
 p{
   width: 70%;
-  font-size: 30px;
+  font-size: 25px;
   display: block;
   text-align: center;
 }
 
 .char{
-  font-size: 40px;
+  font-size: 25px;
   height: 40px;
   animation: an 1s ease-out 1 both;
   display: inline-block;
@@ -30,25 +30,4 @@ p{
       opacity: 1;
       transform: perspective(500px) translate3d(0, 0, 0);
   }
-}
-.mylink{
-position: absolute;
-z-index: 150;
-bottom: 0;
-right: 0;
-width: 100%;
-text-align: right;
-padding: .6rem;
-}
-
-.mylink a{
-font-family: Calibri;
-color: #fff;
-border-bottom: 1px solid #fff;
-opacity: .5;
-transition: opacity .3s;
-text-decoration: none
-}
-.mylink a:hover{
-opacity: 1
 }
