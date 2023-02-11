@@ -87,6 +87,13 @@
 		transition: .2s ease-in-out;
 	}
 
+	.card p{
+		color: var(--primary) !important;
+	}
+	.card p:hover{
+		filter:brightness(60%)
+	}
+
 	.card:hover{
 		background-color: rgba(0, 0, 0, 0.6);
 	}

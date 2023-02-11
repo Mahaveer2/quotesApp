@@ -69,14 +69,14 @@ function truncateString(str, num) {
 
 <style>
 	.btn-transparent {
-		background-color: rgba(255, 255, 255, 1);
-		color: #000;
+		background-color: var(--primary);
+		color: #000 !important;
 		outline: none;
 		border: none;
 	}
 
 	.btn-transparent:hover {
-		background-color: rgba(155, 155, 155);
+		filter: brightness(80%);
 	}
 
 	.msg {
