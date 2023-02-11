@@ -1,6 +1,27 @@
 <script>
+	import { onMount } from "svelte";
 	import Transition from "../../components/Transition.svelte";
   export let data;
+  import "./about.css"
+
+  onMount(() => {
+    var text = document.getElementById('text');
+        var newDom = '';
+        var animationDelay = 6;
+
+        for(let i = 0; i < text.innerText.length; i++)
+        {
+            newDom += '<span class="char">' + (text.innerText[i] == ' ' ? '&nbsp;' : text.innerText[i])+ '</span>';
+        }
+
+        text.innerHTML = newDom;
+        var length = text.children.length;
+
+        for(let i = 0; i < length; i++)
+        {
+            text.children[i].style['animation-delay'] = animationDelay * i + 'ms';
+        }
+  })
 </script>
 
 <Transition>
@@ -13,9 +34,9 @@
           <rect x="0" y="0" width="36" height="36" fill-opacity="0"/>
       </svg>
       </div>
-      <div style="width: 100%;" class="wrapper center col"> 
-        <h1 style="color:#fff">About</h1>
-        <p style="color:#fff">"Welcome to our website, where we provide quick and easy online quotes for a variety of products and services. Our team of experts is dedicated to helping you find the best deals and discounts to fit your needs. With years of experience in the industry, we have the knowledge and resources to find the perfect solution for you. We pride ourselves on our commitment to customer satisfaction and strive to make the quote process as simple and stress-free as possible. Thank you for choosing us for your online quote needs.</p>
+      <div class="center">
+        <h2>About</h2>
+          <p id="text">Welcome to our website for quick and easy online quotes. Our expert team offers the best deals and discounts to fit your needs. With industry experience, we find the perfect solution. Customer satisfaction is our top priority. Thank you for choosing us.          </p>
       </div>
     </div>
   </div>
