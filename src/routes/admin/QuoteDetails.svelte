@@ -85,7 +85,7 @@
 <a href={`admin/quote/${quote.id}`} style="text-decoration:none;color:#fff !important;height:180px">
   <div class="quote">
 		{#if !quote.activated}
-			<span style="background:red;color:#fff;border-radius:20px;padding:2px;width:120px;display:flex;justify-content:center;align-items:center;">Pending</span>
+			<span style="background:red;color:#fff;border-radius:20px;font-size:16px;padding:1px;width:120px;display:flex;justify-content:center;align-items:center;">Pending</span>
 		{/if}
     <span class="author">{quote.Author}</span>
     <p>{quote.quote}</p>
@@ -98,7 +98,7 @@
 	.grid-own{
 		display: grid;
 		grid-template-columns: repeat(3,1fr);
-		gap: 4px;
+		gap: 8px;
 	}
 
 	@media screen and (max-width:768px){

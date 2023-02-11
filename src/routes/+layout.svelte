@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { SvelteToast } from '@zerodevx/svelte-toast'
 	import AudioPlayer from '../components/AudioPlayer.svelte';
 	import Loader from '../components/Loader/Loader.svelte';
 	import Navbar from '../components/Navbar/Navbar.svelte';
@@ -9,9 +10,10 @@
 	import QuoteMain from '../components/QuoteMain.svelte';
 	import moment from 'moment';
 	let bgs=[];
-
+	const options = {};
 	export let data;
 	const trending = data.data;
+	let {settings} = data;
 	let musicUrl;
 	const fetchBackgrounds = async () => {
 		const res = await fetch('/api/getbackgrounds/',
@@ -59,16 +61,20 @@
 			}, 300);
 		});
 	});
-</script>
 
+	let site = JSON.parse(settings.data);
+	let color = `rgba(${site.color.r},${site.color.g},${site.color.b},${site.color.a})`;
+</script>
 <div class="cursor" />
 <Loader />
 <svelte:head>
-	<title>ChrisQuotes</title>
-	<link rel="icon" href='/favicon.png' />
+	<title>{site.title}</title>
+	{@html site.links}
+	<link rel="icon" href={site.logo} />
 	<link rel="apple-touch-icon image_src" href='/favicon.png' />
 </svelte:head>
-<Navbar />
+<body style={`--font:${site.font};--primary:${color}`}>
+<Navbar title={site.title}/>
 <div class="app">
 	<div class="overlay" />
 	{#if bgs[currentIndex]}
@@ -111,3 +117,5 @@
 		font-family: var(--font) !important;
 	}
 </style>
+<SvelteToast {options} />
+</body>

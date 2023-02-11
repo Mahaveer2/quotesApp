@@ -1,5 +1,6 @@
 <script>
 	import { each } from 'svelte/internal';
+	import { toast } from '@zerodevx/svelte-toast'
 	import { onMount } from 'svelte';
 	import './style.scss';
 	let showImage = false;
@@ -67,6 +68,7 @@
 
 		e.target.reset();
 		showImage = false;
+		toast.push("Uploaded Background")
 		busy = false;
 		let json = await res.json();
 		loadBackgrounds();
@@ -91,9 +93,10 @@
 		if (json.status == 200) {
 			loadBackgrounds();
 			deleting = false;
-			console.log('deleted background');
+			toast.push("Deleted background")
 		}
 	};
+
 </script>
 
 <div class="container">

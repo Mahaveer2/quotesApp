@@ -32,6 +32,11 @@ model Backgrounds {
   url   String 
 }
 
+model Site{
+  id Int @id @default(autoincrement())
+  data Json
+}
+
 model Music {
   id    Int    @id @default(autoincrement())
   title String

@@ -6,6 +6,12 @@ export async function load({ params }) {
   let data = await prisma.quote.findMany({
     orderBy:[{views:'desc'}]
   })
+  
+  let defaults = await prisma.site.findFirst({
+    where:{
+      id:1,
+    }
+  })
 
   if(data.length > 10) {
     data.length = 10;
@@ -21,5 +27,6 @@ export async function load({ params }) {
   return {
     quotes:quotes,
     data:data,
+    settings:defaults,
   }
 }
