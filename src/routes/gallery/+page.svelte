@@ -70,7 +70,7 @@ canvas{
   left:0;
   width:100vw;
   height:100vh;
-  top: 0%;
+  top: 80px;
   z-index: 0000;
 }
 </style>
