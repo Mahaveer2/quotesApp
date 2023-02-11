@@ -1,6 +1,8 @@
 <script>
 	import { onMount } from 'svelte';
+	import { navigating } from '$app/stores';
 	import { SvelteToast } from '@zerodevx/svelte-toast'
+	import { afterNavigate } from '$app/navigation';
 	import AudioPlayer from '../components/AudioPlayer.svelte';
 	import Loader from '../components/Loader/Loader.svelte';
 	import Navbar from '../components/Navbar/Navbar.svelte';
@@ -15,6 +17,7 @@
 	const trending = data.data;
 	let {settings} = data;
 	let musicUrl;
+	let url;
 	const fetchBackgrounds = async () => {
 		const res = await fetch('/api/getbackgrounds/',
 		{
@@ -24,6 +27,7 @@
 		if (data.length) {
 			bgs = data;
 			bgs = bgs;
+			logic();
 		}
 	};
 
@@ -32,15 +36,37 @@
 	let currentIndex = 0;
 	let quoteArray = [quotes];
 
-	setInterval(() => {
-		if(bgs){
-			if (currentIndex == bgs.length -1 ) {
-			currentIndex = 0;
-		} else {
-			currentIndex++;
-		}
-		}
-	}, 1000 * 60 *2);
+	const logic = () => {
+		bgs.forEach((bg,i) => {
+			if(bg.page == "Home" && $page.url.pathname == "/" || bg.page == "Home" && $page.url.pathname =="/quote" || bg.page == "Home" && $page.url.pathname == "/category" || bg.page == "Home" && $page.url.pathname == "/admin" ){
+				url = "";
+				url+= bg.url;
+				url = url;
+			}else if(bg.page == "Create" && $page.url.pathname == "/create"){
+				url = "";
+				url+= bg.url;
+				url = url;
+			}else if(bg.page == "Gallery" && $page.url.pathname == "/gallery"){
+				url = "";
+				url+= bg.url;
+				url = url;
+			}else if(bg.page == "Search" && $page.url.pathname == "/search"){
+				url = "";
+				url+= bg.url;
+				url = url;
+			}else if(bg.page == "About" && $page.url.pathname == "/about"){
+				url = "";
+				url+= bg.url;
+				url = url;
+			}else if(bg.page == "Trending" && $page.url.pathname == "/trending"){
+				url = "";
+				url+= bg.url;
+				url = url;
+			}
+		})
+		url = url;
+	}
+
 	let play = false;
 
 	onMount(() => {
@@ -62,6 +88,8 @@
 		});
 	});
 
+	afterNavigate(logic)
+
 	let site = JSON.parse(settings.data);
 	let color = `rgba(${site.color.r},${site.color.g},${site.color.b},${site.color.a})`;
 </script>
@@ -77,13 +105,11 @@
 <Navbar title={site.title}/>
 <div class="app">
 	<div class="overlay" />
-	{#if bgs[currentIndex]}
 		<img
-			src={`${bgs[currentIndex].url}`}
+			src={url}
 			alt="background image"
 			class="main-image"
 		/>
-	{/if}
 	<div
 		class="container app-content"
 		style={`position:${$page.url.pathname == '/gallery' ? '' : 'relative'};`}

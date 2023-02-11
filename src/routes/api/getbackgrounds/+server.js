@@ -6,6 +6,6 @@ import { PrismaClient } from '@prisma/client';
 
 export async function GET() {
   let client = new PrismaClient();
- let res = await client.backgrounds.findMany({});
+  let res = await client.backgrounds.findMany({});
  return json(res);
 }

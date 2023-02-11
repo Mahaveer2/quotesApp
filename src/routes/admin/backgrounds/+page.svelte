@@ -100,35 +100,12 @@
 </script>
 
 <div class="container">
-	<form class="myform" bind:this={form} on:submit={(e) => handleSubmit(e)}>
-		<input
-			bind:this={input}
-			on:change={onChange}
-			disabled={busy}
-			required
-			class="hidden contrast"
-			name="image"
-			id="file-to-upload"
-			type="file"
-			accept=".png,.jpg"
-		/>
-		<button aria-busy={busy} disabled={busy} class="upload-btn contrast" type="submit"
-			>Upload</button
-		>
-	</form>
-	<div bind:this={container}>
-		{#if showImage && !busy}
-			<img class="preview" bind:this={image} src="" alt="Preview" />
-			<button class="abort" on:click={cancel}>Cancel</button>
-		{:else}
-			<span bind:this={placeholder}>Image Preview</span>
-		{/if}
-	</div>
-	<div aria-busy={deleting} class="grid">
+	<div style="margin-top:20px" aria-busy={deleting} class="grid">
 		{#each backgrounds as background}
 			<div class="background">
-				<img alt="Background Image" src={`${background.url}`} />
-				<button on:click={() => deleteBG(background.id,background.url)} class="delete">Delete</button>
+				<span style="margin:5px">{background.page}</span>
+				<a href={`backgrounds/${background.id}`}>
+					<img alt="Background Image" src={`${background.url}`} /></a>
 			</div>
 		{/each}
 	</div>
@@ -138,6 +115,8 @@
 	.grid {
 		display: grid;
 		grid-template-columns: repeat(3, 1fr) !important;
+		gap:20px;
+		height: 100vh;
 	}
 
 	@media screen and (max-width: 768px) {

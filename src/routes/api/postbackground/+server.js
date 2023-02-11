@@ -14,7 +14,10 @@ export async function POST({ request }) {
 		try {
 			const client = new PrismaClient();
 			const photoUrl = await cloudinary.uploader.upload(data.image).then(async (url) => {
-				let _res = await client.backgrounds.create({
+				let _res = await client.backgrounds.update({
+					where:{
+						id: Number(data.id)
+					},
 					data: {
 						url: url.url,
 					}
