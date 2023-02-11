@@ -42,11 +42,11 @@ function truncateString(str, num) {
 
 <form aria-busy={busy} aria-disabled={busy} on:submit={e => createQuote(e)}>
 	<p style="color: #fff;">Do you have an original Quote you would like to see it published. Simply Type in your Quote, once our Team verifies it is original and from you, we will post on the site.</p>
-	<input required  name="email" type="email" placeholder="Email" />
-	<input required  name="name" type="text" placeholder="Name" />
-	<input required  name="author" type="text" placeholder="Author" />
 	<textarea bind:value={chars} maxlength="100" required  name="quote" on:keydown={countChar} type="text" placeholder="Quote" />
 	<textarea required name="description" type="text" placeholder="Description" />
+	<input required  name="author" type="text" placeholder="Author" />
+	<input required  name="name" type="text" placeholder="Full name" />
+	<input required  name="email" type="email" placeholder="Email" />
 	<select required  name="categoryid" id="">
 		{#each categories as category}
 			<option value={category.id} placeholder="Select a category">{category.title}</option>

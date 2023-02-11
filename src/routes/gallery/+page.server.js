@@ -9,7 +9,6 @@ export async function load(){
   })
 
   data.forEach(e => {
-    text += e.Author + " ";
     text += e.quote + " ";
   })
   return {

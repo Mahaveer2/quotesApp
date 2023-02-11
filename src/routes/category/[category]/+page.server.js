@@ -14,7 +14,6 @@ export async function load({ params }) {
     }
   })
 
-  console.log(data)
 
   if(!data){
     throw error(404, 'Not found');

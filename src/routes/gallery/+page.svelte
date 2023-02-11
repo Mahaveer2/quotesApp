@@ -103,7 +103,7 @@ canvas{
   left:0;
   width:100vw;
   height:100vh;
-  top: 50%;
-  z-index: 1000000;
+  top: 0%;
+  z-index: 0000;
 }
 </style>

@@ -1,7 +1,7 @@
 .app{
   width: 100%;
   z-index:  000;
-  position: relative;
+
   object-fit: contain;
   max-inline-size: 100%;
   block-size: auto;
@@ -47,7 +47,7 @@ input,textarea,select{
 }
 
 .card-container{
-  position: relative;
+  height: 100vh;
   overflow-y: hidden;
 }
 
