@@ -78,10 +78,17 @@
 		border-radius: 8px;
 		padding: 30px;
 		display: flex;
+		border-radius: 8px;
+		border:1px solid rgba(255, 255,255, 0.1);
 		margin-bottom: 10px;
 		flex-direction: column;
 		align-items: flex-start;
 		justify-content: center;
+		transition: .2s ease-in-out;
+	}
+
+	.card:hover{
+		background-color: rgba(0, 0, 0, 0.6);
 	}
 
 	article,

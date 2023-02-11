@@ -1,6 +1,6 @@
 
 .card-float .quote-card-main{
-  animation: float 60s  linear infinite !important;
+  animation: float 80s  linear infinite !important;
   width: 100%;
 }
 
@@ -9,6 +9,6 @@
     transform: translateY(0%);
   }
   100% {
-    transform: translateY(-2400%);
+    transform: translateY(-3000%);
   }
 }

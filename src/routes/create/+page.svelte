@@ -46,7 +46,7 @@ function truncateString(str, num) {
 	<textarea required name="description" type="text" placeholder="Description" />
 	<input required  name="author" type="text" placeholder="Author" />
 	<input required  name="name" type="text" placeholder="Full name" />
-	<input required  name="email" type="email" placeholder="Email" />
+	<input required  name="email" type="email" placeholder="Your Email" />
 	<select required  name="categoryid" id="">
 		{#each categories as category}
 			<option value={category.id} placeholder="Select a category">{category.title}</option>

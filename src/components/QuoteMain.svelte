@@ -25,6 +25,13 @@
 			</a>
 		</span>
 	{/each}
+	{#each _quotes as quote}
+		<span class="quote-card-main">
+			<a style="text-decoration: none;width:100%;" href={`/quote/${quote.id}`}>
+				<Quote isFull={false} {quote} />
+			</a>
+		</span>
+	{/each}
 	</div>
 </div>
 
