@@ -20,7 +20,7 @@ export const POST = async ({request}) => {
             email: formData.get('email'),
           },
           data:{
-            email:formData.get('email'),
+            email:formData.get('newemail'),
             password: formData.get('password')
           }
         })

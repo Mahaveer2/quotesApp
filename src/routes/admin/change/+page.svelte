@@ -28,6 +28,7 @@
 
 <form on:submit={e => handle(e)}>
   <input type="email" required name="email" placeholder="Email">
+  <input type="email" required name="newemail" placeholder="New Email">
   <input type="password" required name="old" placeholder="Old Password">
   <input bind:value={p} type="password" required name="password" placeholder="Password">
   <p style={s||'color:red'}>
