@@ -38,7 +38,6 @@
 
 	const logic = () => {
 		const checkHome = () => {}
-		console.log($page.url.pathname)
 		bgs.forEach((bg,i) => {
 			if(bg.page == "Home" && $page.url.pathname == "/" || bg.page == "Home" && $page.url.pathname =="/quote" || bg.page == "Home" && $page.url.pathname == "/category" || bg.page == "Home" ){
 				url = "";

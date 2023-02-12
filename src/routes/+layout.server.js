@@ -6,6 +6,7 @@ export async function load({ params }) {
   let data = await prisma.quote.findMany({
     orderBy:[{views:'desc'}]
   })
+  let quotes;
   
   let defaults = await prisma.site.findFirst({
     where:{
@@ -13,16 +14,23 @@ export async function load({ params }) {
     }
   })
 
+  const json = JSON.parse(defaults.data);
+  const categoryId = json.galleryCategory;
+  const homeId = json.homeCategory;
+
   if(data.length > 10) {
     data.length = 10;
   }
-  
-  let quotes = await prisma.quote.findMany({
+
+  let category = await prisma.category.findFirst({
     where:{
-      activated:true
+      id:Number(homeId),
+    },
+    include:{
+      Quotes:true,
     }
   })
-  quotes = _.shuffle(quotes);
+  quotes = _.shuffle(category.Quotes);
   
   return {
     quotes:quotes,

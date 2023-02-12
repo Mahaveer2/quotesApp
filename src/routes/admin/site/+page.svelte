@@ -1,4 +1,5 @@
 <script>
+	import { set } from 'nprogress';
 	import ColorPicker from 'svelte-awesome-color-picker';
   export let data;
   let { categories,defaults } = data;
@@ -29,6 +30,7 @@
       color:rgb,
       links:data.get('links'),
       logo:avatar,
+      homeCategory:data.get('homeCategory'),
       title:title,
       galleryCategory:data.get('categoryid'),
     }))
@@ -43,7 +45,7 @@
 </script>
 
 <h1>Change site settings here</h1>
-<form  on:submit={(e) => handle(e)} style="width:100%;height:120vh" class="form">
+<form  on:submit={(e) => handle(e)} style="width:100%;height:130vh" class="form">
   <div class="logo">
     {#if avatar}
   <img on:click={()=>{fileinput.click();}} style="width:100px;cursor:pointer" class="avatar" src="{avatar}" alt="" /> 
@@ -58,6 +60,13 @@
   <input value={settings.font} type="text" name="fontname" placeholder="Font name"/>
   <span>Site name</span>
   <input required type="text" bind:value={title} placeholder="Site Name">
+  <span>Select Category for Home Page Quotes</span>
+  <select name="homeCategory">
+		<option disabled>Select a quote</option>
+		{#each categories as category}
+			<option value={category.id}>{category.title}</option>
+		{/each}
+	</select>
   <span>Select Category for Gallery</span>
   <select name="categoryid">
 		<option disabled>Select a quote</option>

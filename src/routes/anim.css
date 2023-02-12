@@ -1,7 +1,8 @@
 
 .card-float .quote-card-main{
-  animation: float 80s  linear infinite !important;
+  animation: float 10s  linear infinite !important;
   width: 100%;
+  transition: .2s ease !important;
 }
 
 @keyframes float{
@@ -9,6 +10,6 @@
     transform: translateY(0%);
   }
   100% {
-    transform: translateY(-3000%);
+    transform: translateY( calc(-108% * var(--count) ));
   }
 }

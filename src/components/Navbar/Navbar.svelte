@@ -29,6 +29,9 @@
 			<NavLink title="Home" href="/" />
 		</li>
 		<li on:click={() => (nav = false)}>
+			<NavLink title="About us" href="/about" />
+		</li>
+		<li on:click={() => (nav = false)}>
 			<NavLink title="Search" href="/search" />
 		</li>
 		<li on:click={() => (nav = false)}>
@@ -39,9 +42,6 @@
 		</li>
 		<li on:click={() => (nav = false)}>
 			<NavLink title="Trending" href="/trending" />
-		</li>
-		<li on:click={() => (nav = false)}>
-			<NavLink title="About" href="/about" />
 		</li>
 		</div>
 	</ul>
