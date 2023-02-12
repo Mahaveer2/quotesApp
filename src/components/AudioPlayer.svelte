@@ -32,9 +32,9 @@
 		width: 60px;
 		height: 60px;
 		position: sticky;
-		z-index: 1000;
-		bottom: 5%;
-		left: 3%;
+		z-index: 1000000;
+		bottom: 3%;
+		left: 2%;
 		background: #ffafbd; /* fallback for old browsers */
 		background: -webkit-linear-gradient(
 			to right,
