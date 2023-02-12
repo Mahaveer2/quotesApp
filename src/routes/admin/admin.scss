@@ -3,7 +3,7 @@
 	border-radius: 8px;
 	border:1px solid rgba(113, 113, 113, 0.3);
 	padding: 20px;
-	color: #fff;
+	color: #fff !important;
 	display: flex;
 	flex-direction: column;
 	transition: .2s ease;
@@ -13,6 +13,10 @@
 	cursor: pointer;
 
 	&:hover{
-		background: rgba(0,0,0,.5);
+		filter: brightness(70%);
+	}
+
+	p{
+		color:var(--primary) !important;
 	}
 }

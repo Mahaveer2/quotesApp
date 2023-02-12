@@ -1,1 +1,1 @@
-<h1>Top ten Quotes</h1>
+<h1 style="font-size:24px;margin:0 10px">Top ten Quotes</h1>

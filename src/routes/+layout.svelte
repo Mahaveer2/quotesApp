@@ -120,7 +120,7 @@
 
 		<div
 			style={`${
-				$page.url.pathname == '/' ? 'visibility:visible;height:100%' : 'visibility:hidden;;'
+				$page.url.pathname == '/' ? 'visibility:visible;height:100%' : 'visibility:hidden;height:0'
 			};position:${$page.url.pathname == '/gallery' ? '' : 'relative'};`}
 		>
 		<h1 style="font-size:24px;margin:10px 10px">Welcome to {site.title}</h1>
@@ -130,7 +130,7 @@
 		<div
 			style={`${
 				$page.url.pathname == '/trending' ? 'visibility:visible;height:100%' : 'visibility:hidden;height:0;'
-			};position:${$page.url.pathname == '/gallery' ? '' : 'relative'};display:flex;`}
+			};`}
 		>
 			<QuoteMain quotes={trending} />
 		</div>

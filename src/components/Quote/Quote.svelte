@@ -81,15 +81,16 @@
 	.flexer {
 		display: flex;
 		justify-content: space-between;
-		margin-top: 20px;
+		margin-top: 70px;
 		width: 100%;
 	}
-	.category {
+	.category ,span{
 		font-size: 18px;
 		background-color: rgba(0, 0, 0, 0.8);
 		padding: 6px 20px;
 		border-radius: 20px;
 		cursor: pointer;
+		font-family: sans-serif;
 	}
 
 	.speaker{
