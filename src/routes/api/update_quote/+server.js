@@ -20,6 +20,22 @@ export const POST = async ({request}) => {
       quote:formData.get('quote'),
       description:formData.get('description'),
       category:{
+        set:[],
+      }
+    }
+  }) 
+  const createResponse = await client.quote.update({
+    where:{
+      id:Number(formData.get("id")),
+    },
+    data:{
+      email:formData.get('email'),
+      activated:(formData.get('activated') == 'true') ? true : false,
+      name:formData.get('name'),
+      Author:formData.get('author'),
+      quote:formData.get('quote'),
+      description:formData.get('description'),
+      category:{
         connect:{
           id:Number(formData.get('categoryid'))
         }
