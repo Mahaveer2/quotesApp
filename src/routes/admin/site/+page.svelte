@@ -45,7 +45,7 @@
 </script>
 
 <h1>Change site settings here</h1>
-<form  on:submit={(e) => handle(e)} style="width:100%;height:130vh" class="form">
+<form  on:submit={(e) => handle(e)} style="width:100%;height:160vh" class="form">
   <div class="logo">
     {#if avatar}
   <img on:click={()=>{fileinput.click();}} style="width:100px;cursor:pointer" class="avatar" src="{avatar}" alt="" /> 
