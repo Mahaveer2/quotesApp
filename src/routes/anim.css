@@ -1,6 +1,6 @@
 
 .card-float .quote-card-main{
-  animation: float 10s  linear infinite !important;
+  animation: float calc(3.3s * var(--count))  linear infinite !important;
   width: 100%;
   transition: .2s ease !important;
 }
