@@ -27,7 +27,7 @@
   async function logout(){
     const formData = new FormData();
     formData.append("token",localStorage.getItem("admin"));
-    let ok = confirm('Are you sure you want to delete?');
+    let ok = confirm('Are you sure you want log out?');
 		if (!ok) {
 			deleting = false;
 			return false;
