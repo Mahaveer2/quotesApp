@@ -120,10 +120,10 @@
 
 		<div
 			style={`${
-				$page.url.pathname == '/' ? 'visibility:visible;height:100%' : 'visibility:hidden;height:0;'
+				$page.url.pathname == '/' ? 'visibility:visible;height:100%' : 'visibility:hidden;;'
 			};position:${$page.url.pathname == '/gallery' ? '' : 'relative'};`}
 		>
-		<h1>Welcome to {site.title}</h1>
+		<h1 style="font-size:24px;margin:10px 10px">Welcome to {site.title}</h1>
 			<QuoteMain {quotes} />
 		</div>
 

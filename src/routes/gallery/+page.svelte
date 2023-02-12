@@ -69,8 +69,8 @@ canvas{
   position: absolute;
   left:0;
   width:100vw;
-  height:100vh;
-  top: 150px;
-  z-index: 0000;
+  height:90vh;
+  top: 15vh;
+  z-index: 10000;
 }
 </style>
