@@ -24,7 +24,7 @@ if (canvas.getContext) {
     constructor(text) {
       this.text = text;
       this.x = Math.random() * w + 10;
-      this.y = Math.random() * h + 5;
+      this.y = Math.random() * h + 40;
       this.font = `${Math.floor(Math.random() * 50 + 10)}px arial`;
       this.speed = Math.random() * 5 + 1;
     }
@@ -46,9 +46,6 @@ if (canvas.getContext) {
       if (word.x > w) {
         word.x = -word.width;
         let y = Math.random() * (h);
-        if(y > h){
-          move();
-        }
       } else {
         word.x += word.speed;
       }
