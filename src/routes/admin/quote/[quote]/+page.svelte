@@ -7,6 +7,8 @@
   export let data;
   let { id,email,views,quote,name,category,description,Author,activated }= data.quote;
   const {categories} = data;
+	let selectedCategory = data.quote.category[0];
+
 
   async function postData(formData) {
 		// Default options are marked with *
@@ -76,9 +78,11 @@
 		placeholder="Description"
 	/>
 	<select name="categoryid">
-		<option disabled>Select a quote</option>
+		<option value={selectedCategory.id}>{selectedCategory.title}</option>
 		{#each categories as category}
+			{#if category.id != selectedCategory.id}
 			<option value={category.id}>{category.title}</option>
+			{/if}
 		{/each}
 	</select>
 	<div style="display:flex;justify-content:space-between;width:100%">
