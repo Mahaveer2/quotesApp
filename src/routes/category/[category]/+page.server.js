@@ -3,25 +3,29 @@ import client from '$lib/client';
 
 /** @type {import('./$types').PageLoad} */
 export async function load({ params }) {
-  let slug = params.category;
-  
-  let data = await client.category.findUnique({
-    where:{
-      id:Number(slug)
-    },
-    include:{
-      Quotes:true
-    }
-  })
+	let slug = params.category;
 
+	let data = await client.category.findUnique({
+		where: {
+			id: Number(slug)
+		},
+		include: {
+			Quotes: {
+				where: {
+					activated: true
+				}
+			}
+		}
+	});
 
-  if(!data){
-    throw error(404, 'Not found');
-  }
+	console.log(data);
 
-  return {
-    quote:data,
-		title:data.title,
-  } 
+	if (!data) {
+		throw error(404, 'Not found');
+	}
 
+	return {
+		quote: data,
+		title: data.title
+	};
 }

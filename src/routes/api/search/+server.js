@@ -3,7 +3,11 @@ import client from '$lib/client';
 
 export const POST = async ({request}) => {
   const form = await request.formData();
-  const data = await client.quote.findMany();
+  const data = await client.quote.findMany({
+		where:{
+			activated:true,
+		}
+	});
 	let searchTxt = form.get('search');
   let quotes = [];
 

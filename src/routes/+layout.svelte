@@ -18,6 +18,7 @@
 	let {settings} = data;
 	let musicUrl;
 	let url;
+	
 	const fetchBackgrounds = async () => {
 		const res = await fetch('/api/getbackgrounds/',
 		{
