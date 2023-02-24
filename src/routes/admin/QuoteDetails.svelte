@@ -12,6 +12,7 @@
 
   async function postData(url = '', text) {
 		const formData =new FormData();
+		formData.append('token',localStorage.getItem("token"));
 		formData.append('search',text);
 		// Default options are marked with *
     loading = true;

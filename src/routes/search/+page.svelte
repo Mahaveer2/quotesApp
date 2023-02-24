@@ -14,6 +14,7 @@
 			method: 'POST', // *GET, POST, PUT, DELETE, etc.
 			body: formData
 		});
+
 		let json = await response.json();
 		quotes = json;
 		quotes = quotes;
@@ -44,8 +45,8 @@
 	Categories
 	<div class="flexer">
 		{#each categories as category}
-			<a style="color:#fff;" href={`category/${category.id}`}>
-				<div class="category">{category.title}</div>
+			<a style="color:#fff;min-width:250px;" href={`category/${category.id}`}>
+				<div class="category" style="width:100%;display:flex;justify-content:center">{category.title}</div>
 			</a>
 		{/each}
 	</div>

@@ -3,11 +3,16 @@ import client from '$lib/client';
 
 export const POST = async ({request}) => {
   const form = await request.formData();
-  const data = await client.quote.findMany({
-		where:{
-			activated:true,
-		}
-	});
+	let data;
+  if(form.get('token')){
+		data = await client.quote.findMany({});
+	}else{
+		data = await client.quote.findMany({
+			where:{
+				activated:true,
+			}
+		});
+	}
 	let searchTxt = form.get('search');
   let quotes = [];
 
