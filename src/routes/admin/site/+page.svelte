@@ -33,6 +33,7 @@
       homeCategory:data.get('homeCategory'),
       title:title,
       galleryCategory:data.get('categoryid'),
+      about:data.get('about'),
     }))
 
     const response = await fetch("/api/updatesite", {
@@ -56,6 +57,8 @@
   <input style="display:none" type="file" accept=".jpg, .jpeg, .png" on:change={(e)=>onFileSelected(e)} bind:this={fileinput} >
   <span>Tags</span>
   <textarea  value={settings.links} name="links" placeholder="Enter the links of google Fonts|Analytics|Adsense fonts here"></textarea>
+  <span>About Text</span>
+  <textarea  value={settings.about} name="about" placeholder="About section text"></textarea>
   <span>Font Rule</span>
   <input value={settings.font} type="text" name="fontname" placeholder="Font name"/>
   <span>Site name</span>

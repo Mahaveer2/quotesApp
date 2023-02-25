@@ -2,6 +2,7 @@
 	import { onMount } from "svelte";
 	import Transition from "../../components/Transition.svelte";
   export let data;
+  let settings = JSON.parse(data.data);
   import "./about.css"
 
   onMount(() => {
@@ -36,7 +37,7 @@
       </div>
       <div class="center-about">
         <h2>About</h2>
-          <p id="text">Welcome to our website for quick and easy online quotes. Our expert team offers the best deals and discounts to fit your needs. With industry experience, we find the perfect solution. Customer satisfaction is our top priority. Thank you for choosing us.          </p>
+          <p id="text">{settings.about}          </p>
       </div>
     </div>
   </div>
