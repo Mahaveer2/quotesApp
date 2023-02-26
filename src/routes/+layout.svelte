@@ -145,6 +145,7 @@
 	.app blockquote {
 		font-family: var(--font) !important;
 	}
+	
 </style>
 <SvelteToast {options} />
 </body>
