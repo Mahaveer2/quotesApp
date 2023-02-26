@@ -76,10 +76,10 @@
 	});
 
 	const trimText = (str) => {
-		if (str.length > 100) {
+		if (str.length > 120) {
 			return {
 				long:true,
-				text:str.slice(0, 100) + '...',
+				text:str.slice(0, 120),
 			}
 		} else {
 			return {
@@ -103,24 +103,24 @@
 		class="chip"
 		class:active={isSortedByTrending}
 		on:click={() => sortTrending(sortBytrending)}
-		style="width:200px;height:30px;border-radius:20px;flex-direction:column;justify-content:center;align-items:center;"
+		style="width:200px;height:20px;border-radius:20px;flex-direction:column;justify-content:center;align-items:center;"
 		>Sort by trending</button
 	>
 </div>
 <div class="grid-own" aria-busy={loading}>
 	{#each quotes as quote}
-		<a href={`admin/quote/${quote.id}`} style="text-decoration:none;color:#fff !important;">
-			<div class="quote">
+		<a href={`admin/quote/${quote.id}`} style="text-decoration:none;color:#fff !important;position:relative;height:210px">
+			<div class="quote" style="height:210px">
 				{#if !quote.activated}
 					<span
-						style="background:red;color:#fff;border-radius:20px;font-size:16px;padding:1px;width:120px;display:flex;justify-content:center;align-items:center;"
+						style="background:red;color:#fff;border-radius:20px;font-size:16px;padding:1px;width:120px;display:flex;justify-content:center;align-items:center;position:absolute;top:8%;right:8%"
 						>Pending</span
 					>
 				{/if}
 				<span class="author">{quote.Author}</span>
 				<p>{#if trimText(quote.quote).long}
 					{trimText(quote.quote).text} 
-					<a>Read More</a>
+					<a>...Read More</a>
 					{:else}
 					{trimText(quote.quote).text}
 				{/if}</p>
