@@ -27,10 +27,10 @@
 }
 
 const trimText = (str) => {
-		if (str.length > 120) {
+		if (str.length > 100) {
 			return {
 				long:true,
-				text:str.slice(0, 120) + "...",
+				text:str.slice(0, 100) ,
 			}
 		} else {
 			return {
@@ -45,8 +45,9 @@ const trimText = (str) => {
 
 {#if !isFull}
 	<blockquote on:click={() => addView(quote.id)} class={`${!isFull && 'notfull'}`}>
-		<p class="quote-text trunctate" style="margin-top:10px;padding:30px;">
+		<p class="quote-text trunctate" style="margin-top:10px;padding:50px;">
 			{trimText(quote.quote).text}
+			<a style="font-size:20px;color:#eee !important;font-family:sans-serif;text-decoration:none">...Read More</a>
 		</p>
 		{#if showAuthor}
 		<cite>{quote.Author}</cite>
