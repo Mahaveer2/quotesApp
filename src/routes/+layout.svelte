@@ -11,6 +11,7 @@
 	import { page } from '$app/stores';
 	import QuoteMain from '../components/QuoteMain.svelte';
 	import moment from 'moment';
+	import MobileNav from '../components/MobileNav.svelte';
 	let bgs=[];
 	const options = {};
 	export let data;
@@ -140,7 +141,7 @@
 
 	<AudioPlayer {play} src={`/music.mp3`} />
 
-
+<MobileNav/>
 <style>
 	.app blockquote {
 		font-family: var(--font) !important;

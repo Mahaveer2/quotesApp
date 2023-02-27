@@ -69,3 +69,16 @@ cite.animate {
     opacity: 1;
   }
 }
+
+
+@media (max-width:800px){
+  blockquote p {
+    color: var(--primary);
+    opacity: 1;
+    width: 100% !important;
+    padding:0 !important;
+    font-size: 1.8rem !important;
+    animation: fade 2s ease;
+    padding-bottom: 2rem;
+  }
+}

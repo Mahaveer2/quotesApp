@@ -33,7 +33,7 @@
 		height: 60px;
 		position: sticky;
 		z-index: 1000000;
-		bottom: 3%;
+		bottom: 10%;
 		left: 2%;
 		background: #ffafbd; /* fallback for old browsers */
 		background: -webkit-linear-gradient(

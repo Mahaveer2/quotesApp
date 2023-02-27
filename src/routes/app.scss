@@ -17,6 +17,9 @@
 
   .main-image{
     width: 100%;
+    -webkit-transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out;
     min-height: 100vh;
     pointer-events: none;
     object-fit: cover;
