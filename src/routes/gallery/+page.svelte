@@ -1,104 +1,83 @@
 <script>
-	import { onMount } from 'svelte';
-	import { goto } from '$app/navigation';
+  import { onMount } from 'svelte';
+  import { goto } from '$app/navigation';
 
-	export let data;
-	const { quotes } = data;
-	onMount(() => {
-		var words_attr = [];
-
-		const canvas = document.getElementById('c');
-		canvas.width = window.innerWidth;
-		canvas.height = window.innerHeight;
-
-		if (canvas.getContext) {
-			const c = canvas.getContext('2d');
-			const w = canvas.width;
-			const h = canvas.height;
-
-			c.fillStyle = 'white';
-
-			// constructor
-			class Word {
-				constructor(text) {
-					this.text = text.quote;
-					this.id = text.id;
-					this.x = Math.random() * w + 10;
-					this.y = Math.random() * h + 30;
-					this.font = `${Math.floor(Math.random() * 50 + 10)}px arial`;
-					this.speed = Math.random() * 5 + 1;
-				}
-			}
-
-			quotes.forEach((quote) => words_attr.push(new Word(quote)));
-			words_attr.forEach((word) => {
-				canvas.addEventListener('click', function (event) {
-					const clickX = event.clientX;
-					const clickY = event.clientY;
-					if (
-						clickX >= word.x &&
-						clickX <= word.x + word.width &&
-						clickY >= word.y &&
-						clickY <= word.y + parseInt(word.font)
-					) {
-						console.log('You clicked on the word: ' + word.text);
-					}
-				});
-			});
-
-			function animation() {
-				words_attr.forEach((word) => {
-					c.font = word.font;
-					c.fillText(word.text, word.x, word.y);
-					word.width = c.measureText(word.text).width;
-				});
-				move();
-			}
-
-			words_attr.forEach((word) => {
-				canvas.addEventListener('click', function (event) {
-					// Get the mouse position relative to the canvas
-					const rect = canvas.getBoundingClientRect();
-					const x = word.clientX - rect.left;
-					const y = word.clientY - rect.top;
-					const ctx = canvas.getContext('2d');
-
-					// Check if the mouse click was inside the canvas text element
-					if (ctx.isPointInPath(x, y)) {
-						goto("/quote/"+word.id);
-
-					}
-				});
-			});
-
-			function move() {
-				words_attr.forEach((word) => {
-					if (word.x > w) {
-						word.x = -word.width;
-						let y = Math.random() * h;
-					} else {
-						word.x += word.speed;
-					}
-				});
-			}
-
-			setInterval(function () {
-				c.clearRect(0, 0, w, h);
-				animation();
-			}, 24);
-		}
-	});
+  export let data;
+  const { quotes } = data;
 </script>
 
-<canvas id="c" />
+<div class="wrapper">
+  <div class="wrapper__container">
+    {#each quotes as quote}
+      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
+    {/each}
+    {#each quotes as quote}
+      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
+    {/each}
+  </div>
+	<div class="wrapper__container">
+    {#each quotes as quote}
+      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
+    {/each}
+    {#each quotes as quote}
+      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
+    {/each}
+  </div>
+	<div class="wrapper__container">
+    {#each quotes as quote}
+      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
+    {/each}
+    {#each quotes as quote}
+      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
+    {/each}
+  </div>
+</div>
 
 <style>
-	canvas {
-		position: absolute;
-		left: 0;
-		width: 100vw;
-		height: 100vh;
-		top: 90px;
-		z-index: 10000;
-	}
+  .wrapper {
+    display: flex;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+		left:0;
+		flex-direction: column;
+    top: 80px;
+    overflow: hidden;
+  }
+
+  .wrapper__container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    animation: scroll 60s linear infinite;
+    width: max-content;
+    margin-left: -50vw;
+    margin-right: -50vw;
+  }
+
+  .wrapper__container a {
+    text-decoration: none;
+    font-size: var(--font-size);
+    min-width: 500px;
+    max-width: 700px;
+    max-height: 400px;
+    margin: 10px;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    transition: transform 0.2s ease-in-out;
+  }
+
+  .wrapper__container a:hover {
+    transform: scale(1.05);
+  }
+
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
 </style>

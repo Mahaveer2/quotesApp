@@ -16,7 +16,11 @@ export async function load(){
       id:Number(categoryId)
     },
     include:{
-      Quotes:true
+      Quotes:{
+        where:{
+          activated:true,
+        }
+      }
     }
   })
 
