@@ -1,6 +1,7 @@
 <script>
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation';
+  import _, { map } from 'underscore';
 
   export let data;
   const { quotes } = data;
@@ -8,10 +9,18 @@
 
 <div class="wrapper">
   <div class="wrapper__container">
-    {#each quotes as quote}
+    {#each _.shuffle(quotes) as quote}
       <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
     {/each}
-    {#each quotes as quote}
+    {#each _.shuffle(quotes) as quote}
+      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
+    {/each}
+  </div>
+	<div class="wrapper__container">
+    {#each _.shuffle(quotes) as quote}
+      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
+    {/each}
+    {#each _.shuffle(quotes) as quote}
       <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
     {/each}
   </div>
@@ -19,15 +28,7 @@
     {#each quotes as quote}
       <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
     {/each}
-    {#each quotes as quote}
-      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
-    {/each}
-  </div>
-	<div class="wrapper__container">
-    {#each quotes as quote}
-      <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
-    {/each}
-    {#each quotes as quote}
+    {#each _.shuffle(quotes) as quote}
       <a href={`/quote/${quote.id}`} style={`--font-size:${Math.floor(Math.random() * 50 + 20)}px`}>{quote.quote}</a>
     {/each}
   </div>
