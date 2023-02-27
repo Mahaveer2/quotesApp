@@ -94,7 +94,7 @@
   </svg>  
  Site Settings</a>
 </div>
-<QuoteDetails/>
+<QuoteDetails categories={categories}/>
 
 <form on:submit={(e) => createQuote(e)} class={`${modal ? "modal" : "hide"}`}>
   <a href="#" on:click={() => modal = false} style="font-size:40px;text-decoration:none;position:absolute;right:20%;top:10%">&times;</a>

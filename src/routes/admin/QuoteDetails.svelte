@@ -5,7 +5,9 @@
 	let searching = false;
 	let quotes = [];
 	let loading = false;
+	export let categories;
 	let sortBypending = false;
+	let isBusy = false;
 	let sortBytrending = false;
 	let isSortedByTrending = false;
 	let original_Quotes;
@@ -64,10 +66,22 @@
 		}
 	};
 	postData('/api/search', '');
+	original_Quotes = quotes;
+	const handleCategory = (e) => {
+		if(e.value == "All"){
+			isBusy = false;
+			quotes = original_Quotes;
+			return false;
+		}
+		isBusy = true;
+		let _quotes = original_Quotes.filter(c => c?.category[0]?.id == Number(e.value));
+		quotes = _quotes;
+		quotes = quotes;
+	};
 
 	onMount(() => {
 		setInterval(() => {
-			if (search == '' && !sortBypending && !isSortedByTrending) {
+			if (search == '' && !sortBypending && !isSortedByTrending && !isBusy) {
 				loading = false;
 				postData('/api/search', '');
 				loading = false;
@@ -90,7 +104,14 @@
 	};
 </script>
 
-<input on:keyup={() => searchDB(search)} bind:value={search} type="text" placeholder="Search" />
+<input style="margin-top:20px" on:keyup={() => searchDB(search)} bind:value={search} type="text" placeholder="Search" />
+<span>Sort by Category</span>
+<select on:change={(e) => handleCategory(e.target)}>
+	<option value="All" selected>All</option>
+	{#each categories as category}
+			<option value={category.id} placeholder="Select a category">{category.title}</option>
+	{/each}
+</select>
 <div style="display:flex;gap:5px;overflow-x:scroll">
 	<button
 		class="chip"

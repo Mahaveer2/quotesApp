@@ -5,12 +5,16 @@ export const POST = async ({request}) => {
   const form = await request.formData();
 	let data;
   if(form.get('token')){
-		data = await client.quote.findMany({});
+		data = await client.quote.findMany({
+			include:{
+				category:true,
+			}
+		});
 	}else{
 		data = await client.quote.findMany({
 			where:{
 				activated:true,
-			}
+			},
 		});
 	}
 	let searchTxt = form.get('search');

@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
 
 	export let data;
 	const { quotes } = data;
@@ -20,9 +21,10 @@
 			// constructor
 			class Word {
 				constructor(text) {
-					this.text = text;
+					this.text = text.quote;
+					this.id = text.id;
 					this.x = Math.random() * w + 10;
-					this.y = Math.random() * h + 10;
+					this.y = Math.random() * h + 30;
 					this.font = `${Math.floor(Math.random() * 50 + 10)}px arial`;
 					this.speed = Math.random() * 5 + 1;
 				}
@@ -54,19 +56,20 @@
 			}
 
 			words_attr.forEach((word) => {
-  c.font = word.font;
-  word.width = c.measureText(word.text).width;
-  canvas.addEventListener('click', function(event) {
-    const rect = canvas.getBoundingClientRect();
-    const clickX = event.clientX - rect.left;
-    const clickY = event.clientY - rect.top;
-    if (clickX >= word.x && clickX <= word.x + word.width && clickY >= word.y && clickY <= word.y + parseInt(word.font)) {
-      console.log('You clicked on the word: ' + word.text);
-      // Do something else when word is clicked
-    }
-  });
-});
+				canvas.addEventListener('click', function (event) {
+					// Get the mouse position relative to the canvas
+					const rect = canvas.getBoundingClientRect();
+					const x = word.clientX - rect.left;
+					const y = word.clientY - rect.top;
+					const ctx = canvas.getContext('2d');
 
+					// Check if the mouse click was inside the canvas text element
+					if (ctx.isPointInPath(x, y)) {
+						goto("/quote/"+word.id);
+
+					}
+				});
+			});
 
 			function move() {
 				words_attr.forEach((word) => {
@@ -95,7 +98,7 @@
 		left: 0;
 		width: 100vw;
 		height: 100vh;
-		top: 00px;
+		top: 90px;
 		z-index: 10000;
 	}
 </style>

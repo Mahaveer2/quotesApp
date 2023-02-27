@@ -4,7 +4,10 @@ import { PrismaClient } from '@prisma/client'
 const prisma = new PrismaClient()
 export async function load({ params }) {
   let data = await prisma.quote.findMany({
-    orderBy:[{views:'desc'}]
+    orderBy:[{views:'desc'}],
+    where:{
+      activated:true,
+    }
   })
   let quotes;
   
@@ -18,16 +21,16 @@ export async function load({ params }) {
   const categoryId = json.galleryCategory;
   const homeId = json.homeCategory;
 
-  if(data.length > 10) {
-    data.length = 10;
-  }
-
   let category = await prisma.category.findFirst({
     where:{
       id:Number(homeId),
     },
     include:{
-      Quotes:true,
+      Quotes:{
+        where:{
+          activated:true,
+        }
+      },
     }
   })
   quotes = _.shuffle(category.Quotes);

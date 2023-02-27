@@ -60,7 +60,7 @@ function truncateString(str, num) {
 			>Select a category</option
 		>
 	</select>
-	<div class="g-recaptcha" data-sitekey='6LekSbgkAAAAAP0eE41uKBYoRbq3H7yHc-Lj0TcI' data-action="onSubmit"></div>
+	<div class="g-recaptcha" style="margin-bottom:20px" data-sitekey='6LekSbgkAAAAAP0eE41uKBYoRbq3H7yHc-Lj0TcI' data-action="onSubmit"></div>
 	<button class="btn-transparent"  
         type="submit" aria-busy={busy} disabled={busy} >Submit</button>
 </form>

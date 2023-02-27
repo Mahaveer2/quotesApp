@@ -2,7 +2,6 @@ import { PrismaClient } from "@prisma/client";
 
 export async function load(){
   const client = new PrismaClient();
-  let quotes = [];
   let defaults = await client.site.findFirst({
     where:{
       id:1,
@@ -21,10 +20,7 @@ export async function load(){
     }
   })
 
-  data.Quotes.forEach(e => {
-    quotes.push(e.quote);
-  })
   return {
-    quotes:quotes,
+    quotes:data.Quotes,
   }
 }
