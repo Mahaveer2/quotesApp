@@ -1,76 +1,101 @@
 <script>
-	import { onMount } from "svelte";
+	import { onMount } from 'svelte';
 
+	export let data;
+	const { quotes } = data;
+	onMount(() => {
+		var words_attr = [];
 
-export let data;
-const { quotes }= data;
-  onMount(() => {
+		const canvas = document.getElementById('c');
+		canvas.width = window.innerWidth;
+		canvas.height = window.innerHeight;
 
-var words_attr = [];
+		if (canvas.getContext) {
+			const c = canvas.getContext('2d');
+			const w = canvas.width;
+			const h = canvas.height;
 
-const canvas = document.getElementById('c');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+			c.fillStyle = 'white';
 
-if (canvas.getContext) {
-  const c = canvas.getContext('2d');
-  const w = canvas.width;
-  const h = canvas.height;
+			// constructor
+			class Word {
+				constructor(text) {
+					this.text = text;
+					this.x = Math.random() * w + 10;
+					this.y = Math.random() * h + 10;
+					this.font = `${Math.floor(Math.random() * 50 + 10)}px arial`;
+					this.speed = Math.random() * 5 + 1;
+				}
+			}
 
-  c.fillStyle = 'white';
+			quotes.forEach((quote) => words_attr.push(new Word(quote)));
+			words_attr.forEach((word) => {
+				canvas.addEventListener('click', function (event) {
+					const clickX = event.clientX;
+					const clickY = event.clientY;
+					if (
+						clickX >= word.x &&
+						clickX <= word.x + word.width &&
+						clickY >= word.y &&
+						clickY <= word.y + parseInt(word.font)
+					) {
+						console.log('You clicked on the word: ' + word.text);
+					}
+				});
+			});
 
-  // constructor
-  class Word {
-    constructor(text) {
-      this.text = text;
-      this.x = Math.random() * w + 10;
-      this.y = Math.random() * h + 40;
-      this.font = `${Math.floor(Math.random() * 50 + 10)}px arial`;
-      this.speed = Math.random() * 5 + 1;
+			function animation() {
+				words_attr.forEach((word) => {
+					c.font = word.font;
+					c.fillText(word.text, word.x, word.y);
+					word.width = c.measureText(word.text).width;
+				});
+				move();
+			}
+
+			words_attr.forEach((word) => {
+  c.font = word.font;
+  word.width = c.measureText(word.text).width;
+  canvas.addEventListener('click', function(event) {
+    const rect = canvas.getBoundingClientRect();
+    const clickX = event.clientX - rect.left;
+    const clickY = event.clientY - rect.top;
+    if (clickX >= word.x && clickX <= word.x + word.width && clickY >= word.y && clickY <= word.y + parseInt(word.font)) {
+      console.log('You clicked on the word: ' + word.text);
+      // Do something else when word is clicked
     }
-  }
-  
-  quotes.forEach(quote => words_attr.push(new Word(quote)));
-
-  function animation() {
-    words_attr.forEach(word => {
-      c.font = word.font;
-      c.fillText(word.text, word.x, word.y);
-      word.width = c.measureText(word.text).width;
-    });
-    move();
-  }
-
-  function move() {
-    words_attr.forEach(word => {
-      if (word.x > w) {
-        word.x = -word.width;
-        let y = Math.random() * (h);
-      } else {
-        word.x += word.speed;
-      }
-    });
-  }
-
-  setInterval(function() {
-    c.clearRect(0, 0, w, h);
-    animation();
-  }, 24);
-}
+  });
+});
 
 
-  })
+			function move() {
+				words_attr.forEach((word) => {
+					if (word.x > w) {
+						word.x = -word.width;
+						let y = Math.random() * h;
+					} else {
+						word.x += word.speed;
+					}
+				});
+			}
+
+			setInterval(function () {
+				c.clearRect(0, 0, w, h);
+				animation();
+			}, 24);
+		}
+	});
 </script>
 
-<canvas id="c" ></canvas> 
-<style>
+<canvas id="c" />
 
-canvas{
-  position: absolute;
-  left:0;
-  width:100vw;
-  height:100vh;
-  top: 100px;
-  z-index: 10000;
-}
+<style>
+	canvas {
+		position: absolute;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		top: 00px;
+		z-index: 10000;
+	}
 </style>

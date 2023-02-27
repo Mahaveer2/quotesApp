@@ -27,10 +27,10 @@
 }
 
 const trimText = (str) => {
-		if (str.length > 100) {
+		if (str.length > 150) {
 			return {
 				long:true,
-				text:str.slice(0, 100) ,
+				text:str.slice(0, 150) ,
 			}
 		} else {
 			return {
@@ -47,7 +47,9 @@ const trimText = (str) => {
 	<blockquote on:click={() => addView(quote.id)} class={`${!isFull && 'notfull'}`}>
 		<p class="quote-text trunctate" style="margin-top:10px;padding:50px;">
 			{trimText(quote.quote).text}
-			<a style="font-size:20px;color:#eee !important;font-family:sans-serif;text-decoration:none">...Read More</a>
+			{#if trimText(quote.quote).long}
+			<a style="font-size:18px;color:#eee !important;font-family:sans-serif;text-decoration:none">...Read More</a>
+			{/if}
 		</p>
 		{#if showAuthor}
 		<cite>{quote.Author}</cite>
@@ -113,7 +115,7 @@ const trimText = (str) => {
 		justify-content: center;
 		position: absolute;
 		left: 90%;
-		top: 20%;
+		bottom: 2%;
 		background: #ffafbd; /* fallback for old browsers */
 		background: -webkit-linear-gradient(
 			to right,

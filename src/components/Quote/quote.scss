@@ -42,7 +42,7 @@ blockquote .quote-text {
 }
 
 blockquote p {
-  color: #fff;
+  color: var(--primary);
   opacity: 1;
   font-size: 2.7rem;
   animation: fade 2s ease;

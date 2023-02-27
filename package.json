@@ -19,6 +19,7 @@
 		"prettier-plugin-svelte": "^2.8.1",
 		"prisma": "^4.10.0",
 		"svelte": "^3.54.0",
+		"svelte-recaptcha-v2": "^0.0.2",
 		"vite": "^4.0.0"
 	},
 	"type": "module",

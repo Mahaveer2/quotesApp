@@ -3,11 +3,16 @@
 	import Transition from '../../components/Transition.svelte';
 	import { PrismaClient } from '@prisma/client';
 	export let data;
+	const googleRecaptchaSiteKey=import.meta.env.VITE_CAPTCHA_KEY;
 	
 	let msg = "";
 	let chars = "";
 	let categories = data.categories;
 	let busy = false;
+
+	function onSubmit(token) {
+     document.getElementById("myform").submit();
+  }
 
 	
 	async function createQuote(e) {
@@ -40,7 +45,7 @@ function truncateString(str, num) {
 
 <h1>Post a Quote</h1>
 
-<form aria-busy={busy} aria-disabled={busy} on:submit={e => createQuote(e)}>
+<form id="myform" aria-busy={busy} aria-disabled={busy} on:submit={e => createQuote(e)}>
 	<p style="color: #fff;">Do you have an original Quote you would like to see it published. Simply Type in your Quote, once our Team verifies it is original and from you, we will post on the site.</p>
 	<textarea bind:value={chars} maxlength="200" required  name="quote" on:keydown={countChar} type="text" placeholder="Quote" />
 	<textarea required name="description" type="text" placeholder="Description/Meaning" />
@@ -55,10 +60,12 @@ function truncateString(str, num) {
 			>Select a category</option
 		>
 	</select>
-	<button class="btn-transparent" aria-busy={busy} disabled={busy} type="submit"
-		>Submit Quote</button
-	>
+	<button class="g-recaptcha btn-transparent"  
+        data-sitekey={googleRecaptchaSiteKey}
+        data-callback='onSubmit' aria-busy={busy} disabled={busy} 
+        data-action='submit'>Submit</button>
 </form>
+
 {#if msg}
 	<Transition>
 		<div class="msg">
@@ -66,7 +73,6 @@ function truncateString(str, num) {
 		</div>
 	</Transition>
 {/if}
-
 <style>
 	.btn-transparent {
 		background-color: var(--primary);
