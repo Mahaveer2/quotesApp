@@ -7,14 +7,14 @@
   display: flex;
   justify-content: space-around;
   align-items: center;
-  height:80px;
+  height:70px;
   gap:10px;
   border-top: 2px solid #3838387e;
 }
 
 .mobile_link svg{
-  width:35px;
-  height:35px;
+  width:30px;
+  height:30px;
   transition: .2s ease;
   font-size:50px;
   color:rgba(255, 255, 255, .3) !important;

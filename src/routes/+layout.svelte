@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { settingData } from "$lib/stores";
 	import { navigating } from '$app/stores';
 	import { SvelteToast } from '@zerodevx/svelte-toast'
 	import { afterNavigate } from '$app/navigation';
@@ -33,7 +34,6 @@
 		}
 	};
 
-	onMount(() => fetchBackgrounds());
 	let quotes = data.quotes;
 	let currentIndex = 0;
 	let quoteArray = [quotes];
@@ -95,6 +95,13 @@
 
 	let site = JSON.parse(settings.data);
 	let color = `rgba(${site.color.r},${site.color.g},${site.color.b},${site.color.a})`;
+
+	onMount(() => {
+		fetchBackgrounds();
+		settingData.set({
+			title:site.title,
+		});
+	}); 
 </script>
 <div class="cursor" />
 <Loader />
