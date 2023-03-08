@@ -27,10 +27,10 @@
 }
 
 const trimText = (str) => {
-		if (str.length > 150) {
+		if (str.length > 130) {
 			return {
 				long:true,
-				text:str.slice(0, 150) ,
+				text:str.slice(0, 130) ,
 			}
 		} else {
 			return {
