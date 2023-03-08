@@ -1,7 +1,6 @@
 .app{
   width: 100%;
   z-index:  000;
-
   object-fit: contain;
   max-inline-size: 100%;
   block-size: auto;
@@ -22,6 +21,7 @@
     transition: all .3s ease-in-out;
     min-height: 100vh;
     pointer-events: none;
+    transition: all 0.5s ease-out;
     object-fit: cover;
     z-index: -2;
     position: fixed;

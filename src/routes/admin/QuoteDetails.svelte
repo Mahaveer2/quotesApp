@@ -128,7 +128,46 @@
 		>Sort by trending</button
 	>
 </div>
-<div class="grid-own" aria-busy={loading}>
+<table aria-busy={loading}>
+	<thead>
+		<tr>
+			<th style="width:10%" scope="col">Id</th>
+			<th style="width:80%" scope="col">Quote</th>
+			<th style="width:80%" scope="col">Views</th>
+			<th style="width:10%" scope="col">Pending</th>
+		</tr>
+	</thead>
+	<tbody>
+		{#each quotes as quote}
+		<tr style="width:100%">
+			<th >
+				<a href={`admin/quote/${quote.id}`} style="text-decoration:none;color:#fff !important;width:100% !important">{quote.id}</a>
+				</th>
+			
+			<td>
+				<a href={`admin/quote/${quote.id}`} style="text-decoration:none;color:var(--primary) !important;width:100% !important">{quote.id}
+				{quote.quote}</a>
+			</td>
+			<td>{quote.views}</td>
+			<td>
+				{#if !quote.activated}
+				<span
+					style="background:red;color:#fff;border-radius:20px;font-size:16px;padding:1px;width:120px;display:flex;justify-content:center;align-items:center;"
+					>Pending</span
+				>
+				{:else}
+				<span
+					style="background:green;color:#fff;border-radius:20px;font-size:16px;padding:1px;width:120px;display:flex;justify-content:center;align-items:center;"
+					>Active</span
+				>
+			{/if}
+		
+			</td>
+		</tr>
+		{/each}
+	</tbody>
+</table>
+<!-- <div class="grid-own" aria-busy={loading}>
 	{#each quotes as quote}
 		<a href={`admin/quote/${quote.id}`} style="text-decoration:none;color:#fff !important;position:relative;height:210px">
 			<div class="quote" style="height:210px">
@@ -148,7 +187,7 @@
 			</div>
 		</a>
 	{/each}
-</div>
+</div> -->
 
 <style>
 	.grid-own {
@@ -174,4 +213,18 @@
 		background: #fff;
 		color: #000;
 	}
+
+table,td,tbody,tr,th{
+	border-color: #fff !important;
+}
+
+td a:hover{
+	opacity: 0.7;
+}
+
+table{
+	width:100% !important;
+	background-color: #00000080;
+	margin-top:50px;
+}
 </style>

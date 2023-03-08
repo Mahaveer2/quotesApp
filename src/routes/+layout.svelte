@@ -30,6 +30,7 @@
 		if (data.length) {
 			bgs = data;
 			bgs = bgs;
+			localStorage.setItem('backgrounds',JSON.stringify(data));
 			logic();
 		}
 	};
@@ -97,7 +98,15 @@
 	let color = `rgba(${site.color.r},${site.color.g},${site.color.b},${site.color.a})`;
 
 	onMount(() => {
-		fetchBackgrounds();
+		if(localStorage.getItem('backgrounds')){
+			bgs = JSON.parse(localStorage.getItem('backgrounds'));
+
+			setTimeout(() => {
+				fetchBackgrounds();	
+			},3000)
+		}else{
+			fetchBackgrounds();
+		}
 		settingData.set({
 			title:site.title,
 		});
