@@ -1,6 +1,7 @@
 <script>
 	import { each } from 'svelte/internal';
 	import { toast } from '@zerodevx/svelte-toast'
+	let loading = false;
 	import { onMount } from 'svelte';
 	import './style.scss';
 	let showImage = false;
@@ -15,12 +16,14 @@
 	let backgrounds = [];
 
 	const loadBackgrounds = async () => {
+		loading = true;
 		const res = await fetch('/api/getbackgrounds');
 		let _backgrounds = await res.json();
 		if (_backgrounds.length) {
 			backgrounds = _backgrounds;
 			backgrounds = backgrounds;
 		}
+		loading = false;
 	};
 
 	onMount(() => loadBackgrounds());
@@ -99,7 +102,7 @@
 
 </script>
 
-<div class="container">
+<div class="container" aria-busy={loading}>
 	<div style="margin-top:20px" aria-busy={deleting} class="grid">
 		{#each backgrounds as background}
 			<div class="background">

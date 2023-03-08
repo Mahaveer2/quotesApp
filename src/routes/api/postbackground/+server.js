@@ -15,8 +15,8 @@ export async function POST({ request }) {
 			const client = new PrismaClient();
 			const photoUrl = await cloudinary.uploader.upload(data.image,{
 				transformation: [
-						{ format: 'webp', quality: 'auto' },
-						{ width: 1000, height: 1000, crop: 'limit' } // example of additional transformation options
+						{ format: 'webp'},
+						{ width: 1980, height: 1080, crop: 'limit' } // example of additional transformation options
 				]}).then(async (url) => {
 				let _res = await client.backgrounds.update({
 					where:{
