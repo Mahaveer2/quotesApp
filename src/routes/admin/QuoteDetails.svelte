@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import moment from 'moment';
 	import './admin.scss';
 	let search = '';
 	let searching = false;
@@ -132,9 +133,10 @@
 	<thead>
 		<tr>
 			<th style="width:10%" scope="col">Id</th>
-			<th style="width:80%" scope="col">Quote</th>
-			<th style="width:80%" scope="col">Views</th>
-			<th style="width:10%" scope="col">Pending</th>
+			<th style="width:%" scope="col">Quote</th>
+			<th scope="col">Views</th>
+			<th style="min-width: 150px;">Created At</th>
+			<th  scope="col">Pending</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -149,6 +151,9 @@
 				{quote.quote}</a>
 			</td>
 			<td>{quote.views}</td>
+			<td>
+				{moment(quote.createdAt).format('MM-YYYY')}
+			</td>
 			<td>
 				{#if !quote.activated}
 				<span

@@ -18,6 +18,7 @@ model Quote {
   views Int @default(0)
   activated   Boolean @default(false)
   category    Category[]
+  createdAt   DateTime @default(now())
 }
 
 model Category {
